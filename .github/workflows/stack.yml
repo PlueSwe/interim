@@ -283,6 +283,26 @@ jobs:
           docker compose logs beat 2>&1 | grep -qi "beat: Starting"             || { echo "::error::beat startade inte"; exit 1; }
           docker compose logs beat 2>&1 | grep -qiE "Scheduler: Sending|schedule"             || echo "::warning::beat har inte hunnit skicka nagot jobb an"
 
+      - name: Minnet stacken tar
+        run: |
+          # "Racker 1 GB?" ar en fraga om drift, och den ska besvaras med en
+          # matning i stallet for en gissning. Siffrorna hamnar i jobbloggen
+          # och i README:s dimensioneringsavsnitt. Matt i vila, strax efter
+          # start: det ar det laget en liten VPS maste klara dygnet runt.
+          docker stats --no-stream --format 'table {{.Name}}\t{{.MemUsage}}\t{{.MemPerc}}'
+
+          docker stats --no-stream --format '{{.MemUsage}}' > minne.txt
+          SUMMA=$(cut -d/ -f1 minne.txt | tr -d ' ' | sed 's/iB$//'             | numfmt --from=iec --invalid=ignore             | awk '{s += $1} END {printf "%d", s / 1048576}')
+          echo "summa i vila: ${SUMMA} MiB"
+          echo "::notice::Stacken i vila: ${SUMMA} MiB over sex containrar"
+
+          # Gransen ar inte godtycklig: en maskin med 1 GB har omkring 850 MiB
+          # kvar efter kernel och systemd, och utan swap dor Postgres forst.
+          if [ "$SUMMA" -gt 700 ]; then
+            echo "::warning::Over 700 MiB i vila -- 1 GB-maskiner behover swap"
+          fi
+          rm -f minne.txt
+
       - name: Sakerhetskopia och aterstallningsprov
         run: |
           # pg_dump skriver filen inifran db-containern, dar processen kor som
