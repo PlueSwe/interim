@@ -268,3 +268,63 @@ def test_villkorsordet_smittar_inte_over_en_satsgrans() -> None:
     )
 
     assert res.verdict is ExclusionVerdict.EXCLUDED, res.reason
+
+
+# --- Fler villkorsformer, funna i verklig data ----------------------------------
+#
+# Efter att villkorsregeln kom pa plats sveptes 51 000 historiska annonser in,
+# och ett stickprov pa de exkluderade visade tre formuleringar till som regeln
+# inte tog. Alla tre star ordagrant i statliga annonser.
+
+
+def test_kan_vi_komma_att_ar_ocksa_villkorat() -> None:
+    """ "kan vi komma att" -- orden emellan far inte bryta monstret."""
+    res = assess(
+        LEDNINGSTEXT * 4 + "En anstallning hos oss kan innebara placering i "
+        "sakerhetsklass. Darfor kan vi komma att behova genomfora en "
+        "sakerhetsprovning med registerkontroll enligt sakerhetsskyddslagen (2018:585)."
+    )
+
+    assert res.verdict is ExclusionVerdict.REVIEW_REQUIRED, res.reason
+
+
+def test_vissa_befattningar_ar_villkorat() -> None:
+    """Galler kravet bara vissa tjanster vet vi inte om det galler den har."""
+    res = assess(
+        LEDNINGSTEXT * 4 + "Vissa befattningar ar placerade i sakerhetsklass och "
+        "da kommer en sakerhetsprovning med registerkontroll att genomforas innan "
+        "beslut om anstallning fattas."
+    )
+
+    assert res.verdict is ExclusionVerdict.REVIEW_REQUIRED, res.reason
+
+
+def test_personutredning_som_arbetsuppgift_exkluderar_inte() -> None:
+    """Kriminalvarden *utfor* personutredningar. Det ar jobbet, inte ett krav.
+
+    Utan narhetskravet exkluderades den sortens tjanst pa sin egen
+    verksamhetsbeskrivning -- och hela Kriminalvarden, Socialstyrelsen och
+    socialtjansten med den.
+    """
+    res = assess(
+        "Vi soker en enhetschef till frivarden. Enheten arbetar med klienter som "
+        "star under ungdomsovervakning eller som overvakas med elektronisk fotboja. "
+        "Vi gor aven personutredningar at domstolarna. "
+        * 3
+        + "Du leder tolv medarbetare och har budget- och personalansvar."
+    )
+
+    # Inte exkluderad -- men inte heller tyst godkand.
+    assert res.verdict is ExclusionVerdict.REVIEW_REQUIRED, res.reason
+    assert res.rule_id == "PERSONAL_VETTING_PLAIN", res.rule_id
+
+
+def test_personkontroll_av_den_sokande_exkluderar() -> None:
+    """Samma ord, men nu om rekryteringen."""
+    res = assess(
+        LEDNINGSTEXT * 4 + "Personkontroll genomfors av den sokande innan beslut "
+        "om anstallning fattas."
+    )
+
+    assert res.verdict is ExclusionVerdict.EXCLUDED, res.reason
+    assert res.rule_id == "PERSONAL_VETTING", res.rule_id

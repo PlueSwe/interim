@@ -136,6 +136,35 @@ filtret igen på sparade uppdrag, skriver en **ny** bedömningsrad i stället f�
 skriva över historiken, och rör aldrig ett utfall som en människa har satt. Första
 körningen flyttade fyra uppdrag från `EXCLUDED` till `REVIEW_REQUIRED`.
 
+**Vad myndighetssvepet visade om regeln.** Svepet hämtade 51 063 historiska och
+9 451 aktuella annonser från 384 myndigheter: 1 032 nya uppdrag, 182 ändrade.
+Databasen innehåller nu 1 161 uppdrag, 61 572 snapshottar och 709 organisationer,
+och först då fanns underlag nog att se om villkorsregeln dög. Ett stickprov på de
+exkluderade visade tre formuleringar till som regeln inte tog, alla ordagrant ur
+statliga annonser:
+
+- *"Därför kan vi komma att behöva genomföra en säkerhetsprövning"* – orden mellan
+  `kan` och `komma att` bröt mönstret.
+- *"Vissa befattningar är placerade i säkerhetsklass och då kommer en
+  säkerhetsprövning att genomföras"* – gäller kravet bara vissa tjänster vet vi
+  inte om det gäller den här.
+- *"Vi gör även personutredningar"* – Kriminalvården, Socialstyrelsen och
+  socialtjänsten **utför** personutredningar. Det är arbetsuppgiften, inte ett
+  krav på den sökande. Regeln exkluderade dem på deras egen
+  verksamhetsbeskrivning. Ordet kräver nu närhet till rekryteringen
+  (`anställ`, `rekryter`, `befattning`, `kandidat`, `sökande`, `konsult`, 200
+  tecken); utan den närheten fångas det i stället av `PERSONAL_VETTING_PLAIN` och
+  blir manuell bedömning, så det blir aldrig ett tyst `PASS`.
+
+`ENGINE_VERSION` är `excl-3` och fungerar som staleness-markör: `reassess` bedömde
+om alla 1 161 och flyttade 83 uppdrag. Fördelningen gick från 548 `PASS` / 518
+`EXCLUDED` / 95 `REVIEW_REQUIRED` till **546 / 439 / 176**. De 439 som står kvar
+som exkluderade har ovillkorliga krav – stickprov: *"kommer att genomföras innan
+beslut om anställning fattas"*, *"kommer att genomföras före anställning"*,
+*"behöver du kunna uppvisa ett giltigt utdrag ur belastningsregistret innan du
+börjar arbeta"*. Fyra tester till i `tests/test_exclusion.py`, byggda på de
+verkliga meningarna.
+
 ## Fas 4 – Executive Appointments  ✅ KLAR
 
 - [x] Tillståndsmaskin med tolv statusar och spärrar mot otillåtna övergångar

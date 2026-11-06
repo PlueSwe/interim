@@ -119,7 +119,7 @@ Schemalagd insamling sköts av `worker` och `beat`. Scheman i
 
 ```bash
 cd backend
-pytest -q                 # 151 tester mot SQLite, kräver ingen databas
+pytest -q                 # 164 tester mot SQLite, kräver ingen databas
 pytest -q -m integration  # 6 tester mot verkliga API:er, kräver nätverk
 ```
 
@@ -185,7 +185,7 @@ inte går att prova på en Windows-maskin utan Docker.
 
 | Flöde | När | Vad det provar |
 |---|---|---|
-| `ci.yml` | varje push och PR | ruff, 151 tester mot SQLite, att de genererade filerna är i fas med modellerna, och `alembic upgrade head` mot **PostgreSQL 17 med pgvector** – inklusive att `job_ads.embedding` blir `vector` och inte `json`, att check-villkoren vägrar ett `EXCLUDED` utan citat, och att `alembic downgrade base` lämnar schemat tomt |
+| `ci.yml` | varje push och PR | ruff, 164 tester mot SQLite, att de genererade filerna är i fas med modellerna, och `alembic upgrade head` mot **PostgreSQL 17 med pgvector** – inklusive att `job_ads.embedding` blir `vector` och inte `json`, att check-villkoren vägrar ett `EXCLUDED` utan citat, och att `alembic downgrade base` lämnar schemat tomt |
 | `stack.yml` | push som rör koden, samt söndagar | bygger båda containerbilderna, startar alla sex tjänsterna, kör migreringen i containern, seedar, loggar in genom `web → api`, kontrollerar att IVO-ärendet står kvar som obesvarat och att en begäran inte kan markeras som skickad utan godkännande, och kör **säkerhetskopia plus återställningsprov** på riktigt |
 | `kallor.yml` | måndagar | `probe_sources.py` och de 6 integrationstesterna mot JobTech och TED. Öppnar ett ärende när en källa som står som `ACTIVE` slutat svara |
 

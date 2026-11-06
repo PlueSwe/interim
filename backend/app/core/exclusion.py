@@ -108,10 +108,30 @@ EXCLUDE_RULES: tuple[Rule, ...] = (
         ),
     ),
     Rule(
+        # Ordet maste handla om rekryteringen. Kriminalvarden och socialtjansten
+        # *utfor* personutredningar som arbetsuppgift -- "Vi gor aven
+        # personutredningar" i en annons ar en beskrivning av jobbet, inte ett
+        # krav pa den som soker. Utan narhetskravet exkluderades den sortens
+        # tjanster pa sin egen verksamhetsbeskrivning. Faller narhetskravet
+        # fangas ordet i stallet av PERSONAL_VETTING_PLAIN nedan och blir
+        # manuell bedomning, sa det blir aldrig ett tyst PASS.
         "PERSONAL_VETTING",
         RuleKind.EXCLUDE,
         _p(r"personkontroll(er|en)?|personutredning(ar|en)?"),
         "Personkontroll eller personutredning",
+        requires_near=(
+            r"anst[äa]ll",
+            r"rekryter",
+            r"tj[äa]nsten",
+            r"befattning",
+            r"innan\s+beslut",
+            r"inf[öo]r\s+",
+            r"kandidat",
+            r"s[öo]kande",
+            r"konsult",
+            r"uppdragstagare",
+        ),
+        near_window=200,
     ),
     Rule(
         # Ett sakerhetsskyddsavtal som uttryckligen kraver provning av personalen.
@@ -144,6 +164,14 @@ AMBIGUOUS_RULES: tuple[Rule, ...] = (
         RuleKind.AMBIGUOUS,
         _p(r"s[äa]kerhetsklass(ad|ning|en|er|as)?"),
         "Säkerhetsklass nämns utan att personkontroll framgår",
+    ),
+    Rule(
+        # Se kommentaren vid PERSONAL_VETTING: ordet finns, men sammanhanget
+        # visar inte om det galler den som soker.
+        "PERSONAL_VETTING_PLAIN",
+        RuleKind.AMBIGUOUS,
+        _p(r"personkontroll(er|en)?|personutredning(ar|en)?"),
+        "Personkontroll nämns utan att det framgår om den gäller den sökande",
     ),
     Rule(
         "SECURITY_SENSITIVE_ACTIVITY",
@@ -248,7 +276,11 @@ _NEGATION_EFTER = _p(
 _PROVNINGSORD = r"(?:s[äa]kerhetspr[öo]vning|registerkontroll|bakgrundskontroll|personkontroll)"
 
 _VILLKOR_FORE = _p(
-    r"kan\s+komma\s+att"
+    # "kan vi komma att", "kan man komma att", "kan komma att"
+    r"kan\s+(?:vi|man|du|de|det|den|denna|arbetsgivaren)?\s*komma\s+att"
+    r"|kan\s+(?:inneb[äa]ra|medf[öo]ra|bli)\b"
+    # "Vissa befattningar ar placerade i sakerhetsklass" -- alltsa inte alla.
+    r"|vissa\s+(?:befattningar|tj[äa]nster|roller|anst[äa]llningar|tillsvidareanst)"
     rf"|kan\s+(?:en|ett)?\s*{_PROVNINGSORD}"
     r"|kan\s+(?:bli|kr[äa]vas|f[öo]rekomma|genomf[öo]ras)"
     rf"|eventuell(?:t|a)?\s+{_PROVNINGSORD}"
@@ -268,7 +300,12 @@ VILLKOR_FONSTER_FORE = 160
 VILLKOR_FONSTER_EFTER = 160
 
 MIN_TEXT_LENGTH = 200
-ENGINE_VERSION = "excl-2"
+# Versionen ar staleness-markoren for `reassess_exclusions`: hojs den,
+# bedoms allt insamlat om. Hoj den nar en regel andrar utfall.
+#   excl-1  grundreglerna
+#   excl-2  villkorade sakerhetskrav blir REVIEW_REQUIRED
+#   excl-3  fler villkorsformer; personutredning som arbetsuppgift
+ENGINE_VERSION = "excl-3"
 
 
 @dataclass
