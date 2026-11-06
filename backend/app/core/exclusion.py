@@ -220,8 +220,55 @@ _NEGATION_EFTER = _p(
     r"[^.]{0,40}?(kr[äa]vs inte|beh[öo]vs inte|f[öo]rekommer inte|ej akt?uellt)"
 )
 
+# Villkorade formuleringar.
+#
+# Den har texten star ordagrant i en stor del av statens annonser:
+#
+#   "Innan ett beslut om anstallning fattas kan en sakerhetsprovning enligt
+#    sakerhetsskyddslagen (2018:585) komma att genomforas. Om anstallningen
+#    avser befattning i sakerhetsklass kommer sakerhetsprovningen aven att
+#    innefatta en registerkontroll."
+#
+# Det ar inte ett krav pa den har tjansten. Det ar myndighetens standardtext om
+# att provning *kan* bli aktuell. Behandlas den som ett uttryckligt krav
+# forsvinner storre delen av statens chefsrekryteringar ur radarn -- och det ar
+# precis vad som hande: en vikarierande enhetschef for IT-arkitektur och
+# IT-sakerhet hos Statens fastighetsverk exkluderades pa den har texten, trots
+# att tjansten var sokbar och gick till intervju.
+#
+# Bestallningen sager tva saker som bada pekar pa REVIEW_REQUIRED har:
+# exkludera uppdrag som *kraver* kontroll, och lat ingen osaker annons bli PASS
+# automatiskt. En villkorad formulering ar varken det ena eller det andra, sa
+# den gar till manuell bedomning med citatet sparat.
+#
+# Monstren ar bundna till provningsordet och inte frislappta: ett ensamt "kan"
+# hundra tecken bort far inte mjuka upp ett verkligt krav. Och "i vissa fall"
+# raknas bara nar det star *fore* traffen, eftersom "registerkontroll kommer
+# att genomforas. I vissa fall kravs svenskt medborgarskap" ar ett krav.
+_PROVNINGSORD = r"(?:s[äa]kerhetspr[öo]vning|registerkontroll|bakgrundskontroll|personkontroll)"
+
+_VILLKOR_FORE = _p(
+    r"kan\s+komma\s+att"
+    rf"|kan\s+(?:en|ett)?\s*{_PROVNINGSORD}"
+    r"|kan\s+(?:bli|kr[äa]vas|f[öo]rekomma|genomf[öo]ras)"
+    rf"|eventuell(?:t|a)?\s+{_PROVNINGSORD}"
+    r"|i\s+vissa\s+fall"
+    r"|f[öo]r\s+vissa\s+(?:tj[äa]nster|befattningar|roller|anst[äa]llningar)"
+    r"|om\s+(?:anst[äa]llningen|tj[äa]nsten|befattningen)\s+"
+    r"(?:avser|[äa]r|blir|placeras|innefattar)"
+    r"|vid\s+behov"
+)
+_VILLKOR_EFTER = _p(
+    r"kan\s+komma\s+att"
+    r"|komma\s+att\s+(?:genomf[öo]ras|kr[äa]vas|bli|ske)"
+    r"|kan\s+(?:bli\s+aktuell|kr[äa]vas|f[öo]rekomma|genomf[öo]ras)"
+)
+_SATSGRANS = re.compile(r"[.!?;\n]")
+VILLKOR_FONSTER_FORE = 160
+VILLKOR_FONSTER_EFTER = 160
+
 MIN_TEXT_LENGTH = 200
-ENGINE_VERSION = "excl-1"
+ENGINE_VERSION = "excl-2"
 
 
 @dataclass
@@ -231,6 +278,8 @@ class RuleHit:
     description: str
     quote: str
     offset: int
+    # Sant nar traffen star i en villkorad formulering ("kan komma att").
+    conditional: bool = False
 
 
 @dataclass
@@ -266,6 +315,26 @@ def _negated(text: str, pos: int) -> bool:
     return bool(_NEGATION.search(omgivning) or _NEGATION_EFTER.search(omgivning))
 
 
+def _villkorad(text: str, pos: int) -> bool:
+    """Star traffen i en villkorad formulering?
+
+    Fore och efter behandlas olika med flit. "I vissa fall" mjukar upp det som
+    kommer efter, inte det som stod innan: "registerkontroll kommer att
+    genomforas. I vissa fall kravs svenskt medborgarskap" ar ett krav, inget
+    villkor.
+    """
+    fore = text[max(0, pos - VILLKOR_FONSTER_FORE) : pos]
+    efter = text[pos : pos + VILLKOR_FONSTER_EFTER]
+    # Villkoret maste sta i samma sats som traffen. Utan den gransen smittar ett
+    # "kan komma att" i foregaende mening ner nasta mening, och texten "En
+    # sakerhetsprovning kan komma att genomforas. Befattningen ar placerad i
+    # sakerhetsklass och registerkontroll genomfors." hade blivit manuell
+    # bedomning i stallet for exkluderad.
+    fore = _SATSGRANS.split(fore)[-1]
+    efter = _SATSGRANS.split(efter)[0]
+    return bool(_VILLKOR_FORE.search(fore) or _VILLKOR_EFTER.search(efter))
+
+
 def _scan(text: str, rules: tuple[Rule, ...]) -> list[RuleHit]:
     traffar: list[RuleHit] = []
     for regel in rules:
@@ -283,6 +352,7 @@ def _scan(text: str, rules: tuple[Rule, ...]) -> list[RuleHit]:
                     description=regel.description,
                     quote=excerpt(text, m.start()),
                     offset=m.start(),
+                    conditional=(regel.kind is RuleKind.EXCLUDE and _villkorad(text, m.start())),
                 )
             )
             break  # en traff per regel racker som bevis
@@ -314,8 +384,11 @@ def assess(text: str | None, *, title: str = "") -> ExclusionAssessment:
     exclude_hits = _scan(full, EXCLUDE_RULES)
     benign_hits = _scan(full, BENIGN_RULES)
 
-    if exclude_hits:
-        forsta = exclude_hits[0]
+    # En ovillkorad traff avgor. Finns bara villkorade blir det manuell
+    # bedomning -- aldrig PASS, aldrig automatisk exkludering.
+    ovillkorade = [h for h in exclude_hits if not h.conditional]
+    if ovillkorade:
+        forsta = ovillkorade[0]
         return ExclusionAssessment(
             verdict=ExclusionVerdict.EXCLUDED,
             rule_id=forsta.rule_id,
@@ -324,6 +397,25 @@ def assess(text: str | None, *, title: str = "") -> ExclusionAssessment:
             reason=f"{forsta.description}. Regel {forsta.rule_id}.",
             hits=exclude_hits,
             benign_hits=benign_hits,
+        )
+
+    if exclude_hits:
+        forsta = exclude_hits[0]
+        return ExclusionAssessment(
+            verdict=ExclusionVerdict.REVIEW_REQUIRED,
+            rule_id=f"{forsta.rule_id}_CONDITIONAL",
+            matched_quote=forsta.quote,
+            quote_offset=forsta.offset,
+            reason=(
+                f"{forsta.description}, men formuleringen ar villkorad "
+                f'("kan komma att", "i vissa fall" eller liknande). Det ar inte '
+                f"ett uttryckligt krav pa den har tjansten och far darfor inte "
+                f"exkluderas automatiskt. Kraver manuell bedomning. "
+                f"Regel {forsta.rule_id}."
+            ),
+            hits=exclude_hits,
+            benign_hits=benign_hits,
+            needs_ai=True,
         )
 
     ambiguous_hits = _scan(full, AMBIGUOUS_RULES)

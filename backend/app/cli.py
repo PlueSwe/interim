@@ -82,6 +82,22 @@ def cmd_create_user(args) -> int:
     return 0
 
 
+def _myndighetsnummer(limit: int | None = None) -> list[str]:
+    """Organisationsnummer ur myndighetsregistret, for arbetsgivarsvepet."""
+    from .models import Authority, Organisation
+
+    with session_scope() as s:
+        fraga = (
+            s.query(Organisation.org_number)
+            .join(Authority, Authority.organisation_id == Organisation.id)
+            .filter(Organisation.org_number.isnot(None))
+            .order_by(Organisation.name)
+        )
+        if limit:
+            fraga = fraga.limit(limit)
+        return [r[0] for r in fraga.all()]
+
+
 def cmd_collect(args) -> int:
     from .core.ingest import ingest_run
     from .sources import automatic_keys, get_adapter
@@ -96,7 +112,17 @@ def cmd_collect(args) -> int:
     for nyckel in nycklar:
         adapter = get_adapter(nyckel)
         print(f"\n=== {nyckel} ({adapter.access.value}) ===")
-        resultat = adapter.run(**(json.loads(args.params) if args.params else {}))
+        parametrar = json.loads(args.params) if args.params else {}
+        if getattr(args, "authorities", False):
+            # Svep per myndighet i stallet for per sokord. Se _by_employer i
+            # sources/jobtech.py for varfor det ar den tillforlitliga vagen.
+            orgnr = _myndighetsnummer(args.limit)
+            if not orgnr:
+                print("  myndighetsregistret ar tomt -- kor 'seed' forst", file=sys.stderr)
+                return 1
+            print(f"  sveper {len(orgnr)} myndigheter per organisationsnummer")
+            parametrar["employers"] = orgnr
+        resultat = adapter.run(**parametrar)
         if resultat.skipped:
             print(f"  HOPPADES OVER: {resultat.skip_reason}")
             continue
@@ -116,6 +142,22 @@ def cmd_collect(args) -> int:
             for note in stats.notes[:5]:
                 print(f"    - {note}")
     return kod
+
+
+def cmd_reassess(args) -> int:
+    """Kor exkluderingsfiltret igen pa redan insamlade uppdrag."""
+    from .core.reassess import reassess_exclusions
+
+    with session_scope() as s:
+        stats = reassess_exclusions(s, only_stale=not args.all, dry_run=args.dry_run)
+        print(stats)
+        for rad in stats.noteringar[: args.show]:
+            print(f"  {rad}")
+        if len(stats.noteringar) > args.show:
+            print(f"  ... och {len(stats.noteringar) - args.show} fler")
+        if args.dry_run:
+            print("  (dry-run: ingenting sparades)")
+    return 0
 
 
 def cmd_sources(args) -> int:
@@ -236,7 +278,19 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("source", nargs="?", help="kallans nyckel")
     s.add_argument("--all", action="store_true", help="alla automatiska kallor")
     s.add_argument("--params", default=None, help="JSON med extra parametrar till adaptern")
+    s.add_argument(
+        "--authorities",
+        action="store_true",
+        help="svep per myndighet ur registret i stallet for per sokord",
+    )
+    s.add_argument("--limit", type=int, default=None, help="max antal myndigheter i svepet")
     s.set_defaults(func=cmd_collect)
+
+    s = sub.add_parser("reassess", help="kor exkluderingsfiltret igen pa sparade uppdrag")
+    s.add_argument("--all", action="store_true", help="aven de som redan bedomts med denna version")
+    s.add_argument("--dry-run", action="store_true", help="visa vad som skulle andras")
+    s.add_argument("--show", type=int, default=20, help="hur manga andringar som listas")
+    s.set_defaults(func=cmd_reassess)
 
     s = sub.add_parser("sources", help="visa kallregistret")
     s.set_defaults(func=cmd_sources)

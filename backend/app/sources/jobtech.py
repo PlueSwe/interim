@@ -65,6 +65,16 @@ OCCUPATION_CONCEPT_IDS: tuple[str, ...] = (
     "5zDe_ZGc_x89",  # Avdelningschef, statlig
 )
 
+# Tidsfonster for den historiska kallan.
+#
+# Varfor det maste finnas: historical har alla avpublicerade annonser sedan
+# 2016, och q="IT-chef" ger 4 656 traffar genom aren. Med pagineringstaket
+# nedan hamtas 1 000 av dem, och vilka tusen det blir avgor API:ets ordning --
+# inte datumet. En annons fran i hostas kan alltsa ligga utanfor, och gor det.
+# Med ett fonster blir sokningen i stallet uttommande for den period som
+# betyder nagot: avslutade rekryteringar som annu inte har en kand tillsattning.
+HISTORICAL_DAYS = 180
+
 PAGE_SIZE = 100
 # JobTech slapper inte igenom hur djup paginering som helst. Tio sidor per fraga
 # racker: en bredare traffmangd an 1000 betyder att fragan ar for vid, inte att
@@ -137,30 +147,65 @@ class _JobTechBase(SourceAdapter):
                 break
         return traffar
 
+    def _window(self) -> dict[str, Any]:
+        """Tidsfonster. Bara den historiska kallan har ett -- live ar redan nu."""
+        if not self.historical:
+            return {}
+        fran = dt.datetime.now(dt.UTC) - dt.timedelta(days=HISTORICAL_DAYS)
+        return {"historical-from": fran.strftime("%Y-%m-%dT%H:%M:%S")}
+
+    def _by_employer(self, orgnr: str) -> list[RawItem]:
+        """Allt en arbetsgivare annonserat, oavsett vad tjansten heter.
+
+        Det har ar den enda insamlingsvagen som inte beror pa att nagon har
+        gissat ratt sokord i forvag. Sokordslistan hittar "IT-chef" och
+        "chef IT-arkitektur", men inte "Chef till enheten for IT-arkitektur och
+        IT-sakerhet" sakert -- och den sortens titel ar regel i staten, inte
+        undantag. Myndighetsregistret vet daremot vilka arbetsgivare som ar
+        intressanta, sa svepet gar per organisationsnummer och later
+        core/classify.py avgora vad som ar en ledningsroll.
+
+        API:et tar organisationsnummer utan bindestreck. Med bindestreck
+        svarar det 0 traffar utan felkod, vilket ar varsta sortens svar: det
+        ser ut som att myndigheten inte annonserar nagot.
+        """
+        normaliserat = normalise_orgnr(orgnr)
+        if not normaliserat:
+            return []
+        rader: dict[str, RawItem] = {}
+        for hit in self._search({"employer": normaliserat, **self._window()}):
+            # Sokningen kan ge narliggande arbetsgivare. Behall bara exakt
+            # rätt organisationsnummer.
+            if normalise_orgnr((hit.get("employer") or {}).get("organization_number")) != (
+                normaliserat
+            ):
+                continue
+            rader[str(hit.get("id"))] = _to_raw_item(hit, historical=self.historical)
+        return list(rader.values())
+
     def _collect(
         self,
         queries: tuple[str, ...] = ROLE_QUERIES,
         concept_ids: tuple[str, ...] = OCCUPATION_CONCEPT_IDS,
         employer: str | None = None,
+        employers: tuple[str, ...] = (),
     ) -> list[RawItem]:
         rader: dict[str, RawItem] = {}
 
-        if employer:
-            for hit in self._search({"employer": employer}):
-                # Sokningen kan ge narliggande arbetsgivare. Behall bara exakt
-                # rätt organisationsnummer.
-                orgnr = normalise_orgnr((hit.get("employer") or {}).get("organization_number"))
-                if orgnr != normalise_orgnr(employer):
-                    continue
-                rader[str(hit.get("id"))] = _to_raw_item(hit, historical=self.historical)
+        namnda = tuple(e for e in (employer, *employers) if e)
+        if namnda:
+            for orgnr in namnda:
+                for post in self._by_employer(orgnr):
+                    rader[post.external_id] = post
             return list(rader.values())
 
+        fonster = self._window()
         for fraga in queries:
-            for hit in self._search({"q": fraga}):
+            for hit in self._search({"q": fraga, **fonster}):
                 rader[str(hit.get("id"))] = _to_raw_item(hit, historical=self.historical)
 
         for concept_id in concept_ids:
-            for hit in self._search({"occupation-name": concept_id}):
+            for hit in self._search({"occupation-name": concept_id, **fonster}):
                 rader[str(hit.get("id"))] = _to_raw_item(hit, historical=self.historical)
 
         return list(rader.values())
@@ -183,6 +228,7 @@ class JobTechLiveAdapter(_JobTechBase):
             queries=kwargs.get("queries", ROLE_QUERIES),
             concept_ids=kwargs.get("concept_ids", OCCUPATION_CONCEPT_IDS),
             employer=kwargs.get("employer"),
+            employers=tuple(kwargs.get("employers") or ()),
         )
 
 
@@ -210,6 +256,7 @@ class JobTechHistoricalAdapter(_JobTechBase):
             queries=kwargs.get("queries", ROLE_QUERIES),
             concept_ids=kwargs.get("concept_ids", OCCUPATION_CONCEPT_IDS),
             employer=kwargs.get("employer"),
+            employers=tuple(kwargs.get("employers") or ()),
         )
 
     def fetch_one(self, ad_id: str) -> RawItem | None:

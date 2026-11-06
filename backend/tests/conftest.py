@@ -23,6 +23,9 @@ os.environ.setdefault("DATABASE_URL", f"sqlite:///{_tmp / 'test.db'}")
 os.environ.setdefault("COOKIE_SECURE", "false")
 os.environ.setdefault("SECRET_KEY", "test-nyckel-som-inte-anvands-i-drift")
 os.environ.setdefault("ENVIRONMENT", "test")
+# Granskontrollen provas i ett eget test med sin egen app. Hade den varit pa
+# har skulle sviten rakna anrop fran samma adress och till slut fa 429.
+os.environ.setdefault("RATE_LIMIT_ENABLED", "false")
 
 
 @pytest.fixture

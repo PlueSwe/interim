@@ -37,25 +37,51 @@ app.add_middleware(
 )
 
 # --- Rate limiting ---
-# slowapi mot Redis i drift. Saknas Redis kors applikationen anda, men utan
-# global rate limit; inloggningen har en egen granskontroll i routes_auth.py
-# som inte beror pa Redis.
-try:
-    from slowapi import Limiter, _rate_limit_exceeded_handler
-    from slowapi.errors import RateLimitExceeded
-    from slowapi.middleware import SlowAPIMiddleware
-    from slowapi.util import get_remote_address
+# slowapi mot Redis i drift, med tva fallback-lagen under sig.
+#
+# Varfor det ar byggt i lager: slowapis felhanterare ar skriven for
+# RateLimitExceeded och laser `exc.detail`. Ett lagringsfel ar nagot annat, sa
+# utan fallback blev varje anrop 500 med "AttributeError: 'ConnectionError'
+# object has no attribute 'detail'" den dag Redis inte svarade. Det ar precis
+# vad CI visade, och det ar ett allvarligare fel an att sakna granskontroll --
+# hela API:et hade legat nere for att en hjalptjanst var borta.
+#
+#   1. Redis svarar      -> granserna delas mellan api, worker och beat
+#   2. Redis svarar inte -> raknas i processens minne (per container)
+#   3. aven det fallerar -> anropet slapps igenom, felet loggas
+#
+# Inloggningen har en egen granskontroll i routes_auth.py som raknar i
+# databasen och darfor haller aven i lage 2 och 3.
 
-    limiter = Limiter(
-        key_func=get_remote_address,
-        default_limits=[settings.api_rate_limit],
-        storage_uri=settings.redis_url,
-    )
-    app.state.limiter = limiter
-    app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
-    app.add_middleware(SlowAPIMiddleware)
-except Exception as e:  # pragma: no cover
-    log.warning("rate limiting avstangd: %s", e)
+
+def installera_rate_limiting(app: FastAPI, *, storage_uri: str | None = None) -> str:
+    """Satter global rate limit pa `app`. Returnerar vilket lage som blev."""
+    try:
+        from slowapi import Limiter, _rate_limit_exceeded_handler
+        from slowapi.errors import RateLimitExceeded
+        from slowapi.middleware import SlowAPIMiddleware
+        from slowapi.util import get_remote_address
+
+        limiter = Limiter(
+            key_func=get_remote_address,
+            default_limits=[settings.api_rate_limit],
+            storage_uri=storage_uri or settings.redis_url,
+            in_memory_fallback_enabled=True,
+            swallow_errors=True,
+        )
+        app.state.limiter = limiter
+        app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+        app.add_middleware(SlowAPIMiddleware)
+    except Exception as e:  # pragma: no cover
+        log.warning("rate limiting avstangd: %s", e)
+        return "av"
+    return "redis med fallback till minnet"
+
+
+RATE_LIMIT_LAGE = (
+    installera_rate_limiting(app) if settings.rate_limit_enabled else "av (avstangd i config)"
+)
+log.info("rate limiting: %s", RATE_LIMIT_LAGE)
 
 
 @app.middleware("http")

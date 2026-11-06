@@ -75,7 +75,9 @@ jobs:
 
       - name: Vad bilderna blev
         run: |
-          docker image ls interim-radar-backend:latest interim-radar-web:latest
+          # En tagg per anrop: "docker image ls" tar bara ett argument.
+          docker image ls interim-radar-backend:latest
+          docker image ls interim-radar-web:latest
           echo "--- backend kor som icke-root? ---"
           docker run --rm --entrypoint id interim-radar-backend:latest
           echo "--- web kor som icke-root? ---"
@@ -140,7 +142,7 @@ jobs:
               typ = a.execute(
                   sa.text(
                       "select udt_name from information_schema.columns "
-                      "where table_name='opportunities' and column_name='embedding'"
+                      "where table_name='job_ads' and column_name='embedding'"
                   )
               ).scalar()
           print("tabeller:", tabeller, "| embedding:", typ)

@@ -603,3 +603,36 @@ def test_forklaringen_ar_pa_svenska(client):
     # Ingen text som nar anvandaren ska sakna svenska tecken.
     for fel in ("poang", "langd", "stod i annonsen", "Forandring"):
         assert fel not in text, fel
+
+
+def test_rate_limiting_faller_tillbaka_nar_redis_inte_svarar():
+    """Redis nere far inte gora varje anrop till ett 500-fel.
+
+    Det var sa det blev innan: slowapis felhanterare laser exc.detail, och ett
+    ConnectionError har inget detail. CI fangade det, och det hade annars
+    uppdagats forst den dagen Redis gick ner pa servern -- med hela API:et
+    nere som foljd, for att en hjalptjanst var borta.
+
+    Porten nedan ar avsiktligt en dar ingenting lyssnar.
+    """
+    pytest.importorskip("redis")
+
+    from fastapi import FastAPI
+    from fastapi.testclient import TestClient
+
+    from app.main import installera_rate_limiting
+
+    liten = FastAPI()
+
+    @liten.get("/health")
+    def _health():
+        return {"status": "ok"}
+
+    lage = installera_rate_limiting(liten, storage_uri="redis://127.0.0.1:6399/0")
+    assert lage != "av", "limitern gick inte att satta upp alls"
+
+    with TestClient(liten) as klient:
+        svar = klient.get("/health")
+
+    assert svar.status_code == 200, svar.text
+    assert svar.json() == {"status": "ok"}

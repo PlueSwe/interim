@@ -60,6 +60,38 @@ def collect_source(session: Session, source_key: str, **kwargs) -> dict:
     }
 
 
+def sweep_authorities(
+    session: Session, *, source_key: str = "jobtech_hist", limit: int | None = None
+) -> dict:
+    """Svep myndighetsregistret per organisationsnummer.
+
+    Det har ar insamlingsvagen som inte beror pa att nagon gissat ratt sokord.
+    Sokordslistan i sources/jobtech.py hittar "IT-chef", men statens titlar ser
+    ut som "Chef till enheten for IT-arkitektur och IT-sakerhet" och
+    "Verksamhetsomradeschef Digitalisering och IT". Svepet hamtar allt varje
+    myndighet annonserat och later core/classify.py avgora vad som ar en
+    ledningsroll -- med en felmarginal som gar att mata i stallet for en
+    blindflack som ingen ser.
+    """
+    from ..models import Authority, Organisation
+
+    fraga = (
+        session.query(Organisation.org_number)
+        .join(Authority, Authority.organisation_id == Organisation.id)
+        .filter(Organisation.org_number.isnot(None))
+        .order_by(Organisation.name)
+    )
+    if limit:
+        fraga = fraga.limit(limit)
+    orgnr = [r[0] for r in fraga.all()]
+    if not orgnr:
+        return {"source": source_key, "authorities": 0, "note": "myndighetsregistret ar tomt"}
+
+    resultat = collect_source(session, source_key, employers=orgnr)
+    resultat["authorities"] = len(orgnr)
+    return resultat
+
+
 def collect_authority_pages(session: Session, *, limit: int = 20) -> dict:
     """Las karriarsidor for de myndigheter som ar verifierade.
 

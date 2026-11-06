@@ -92,6 +92,50 @@ spärren inte tar med sig riktiga chefsroller. De sex annonserna är rensade ur
 databasen; snapshotten ligger kvar, så det går att se att de passerade och
 varför de sorterades bort.
 
+### Rättelse 2026-11-06, villkorade säkerhetskrav och insamlingsvägen
+
+Rapporterat av användaren: Statens fastighetsverk sökte i oktober 2026 en
+**vikarierande enhetschef för enheten IT-arkitektur och IT-säkerhet** – en tjänst
+mitt i målgruppen, med verksamhets-, personal- och budgetansvar för 20
+medarbetare, vikariat till 2027-06-30, Stockholm. Den fanns inte i systemet.
+Tre separata fel, alla verifierade mot källan:
+
+1. **Villkorade krav behandlades som uttryckliga.** Annonsen innehåller statens
+   standardformulering: *"Innan ett beslut om anställning fattas kan en
+   säkerhetsprövning enligt säkerhetsskyddslagen (2018:585) komma att
+   genomföras."* Filtret läste det som ett krav och satte `EXCLUDED`. Samma text
+   står i en stor del av statens annonser, så felet tog bort en hel kategori.
+   `app/core/exclusion.py` skiljer nu på uttryckligt och villkorat: `kan komma
+   att`, `i vissa fall`, `om anställningen avser` och liknande ger
+   `REVIEW_REQUIRED` med citatet sparat, aldrig `PASS` och aldrig automatisk
+   exkludering. Villkorsordet måste stå i samma sats som kravet – annars smittar
+   ett *"lönen kan komma att förhandlas"* ner nästa mening. Finns både ett
+   villkorat och ett ovillkorat krav gäller det ovillkorade. Fem tester i
+   `tests/test_exclusion.py`.
+2. **Den historiska källan hade aldrig körts.** `collection_runs` visade en enda
+   körning: `jobtech_live`. Annonsen avpublicerades 2026-10-26, innan systemet
+   fanns, och finns därför bara i `historical`-API:et. Den källan saknade
+   dessutom tidsfönster, och `q="IT-chef"` ger 4 656 träffar sedan 2016 – med
+   pagineringstaket hämtas 1 000 av dem, och API:ets ordning avgjorde vilka.
+   `HISTORICAL_DAYS = 180` gör sökningen uttömmande för den period som betyder
+   något.
+3. **Insamlingen gick bara via sökord.** 19 fritextfraser och 2 yrkesbegrepp var
+   enda vägen in. Statens titlar ser ut som *"Chef till enheten för IT-arkitektur
+   och IT-säkerhet"* och *"Verksamhetsområdeschef Digitalisering och IT"*, och en
+   sökordslista träffar dem bara av tur. `collect --authorities` sveper i stället
+   myndighetsregistret per organisationsnummer och låter klassificeringen avgöra
+   vad som är en ledningsroll. Schemalagt nattligt i `beat` för båda källorna.
+   Samtidigt rättades att `employer=202100-4474` med bindestreck ger 0 träffar
+   **utan felkod** – värsta sortens svar, eftersom det ser ut som att myndigheten
+   inte annonserar något.
+
+Och en fjärde sak som följde av den första: en rättad regel är värd noll så länge
+den bara gäller nya annonser. Insamlingen hoppar över en annons vars snapshot är
+oförändrad, så de redan exkluderade låg kvar. `python -m app.cli reassess` kör
+filtret igen på sparade uppdrag, skriver en **ny** bedömningsrad i stället för att
+skriva över historiken, och rör aldrig ett utfall som en människa har satt. Första
+körningen flyttade fyra uppdrag från `EXCLUDED` till `REVIEW_REQUIRED`.
+
 ## Fas 4 – Executive Appointments  ✅ KLAR
 
 - [x] Tillståndsmaskin med tolv statusar och spärrar mot otillåtna övergångar
@@ -120,12 +164,12 @@ varför de sorterades bort.
 
 - [x] `docker-compose.yml` med sex tjänster (db, redis, api, worker, beat, web),
       `backend/Dockerfile`, `frontend/Dockerfile`, `.env.example`
-- [x] `alembic.ini`, `alembic/env.py` och `0001_initial`, genererad ur modellerna
+- [x] `alembic.ini`, `migrations/env.py` och `0001_initial`, genererad ur modellerna
       av `scripts/gen_migration.py`
 - [x] Schemaläggning via Celery beat
 - [x] Aviseringar med tröskel, köade i `notifications`
 - [x] Säkerhet: rate limit, argon2id, check-villkor i databasen, audit-logg
-- [x] **144 tester**: 138 som kör mot SQLite utan beroenden, 6 integrationstester
+- [x] **157 tester**: 151 som kör mot SQLite utan beroenden, 6 integrationstester
       mot verkliga API:er. Täcker exkluderingsfiltret, matchningen,
       rollklassificeringen, dubblettkontrollen, tillståndsmaskinen,
       JobTech-normaliseringen, begäranden, AI-kontraktet och hela IVO-flödet.
@@ -149,7 +193,7 @@ Det här avsnittet finns för att skillnaden ska gå att se utan att läsa koden
 | Källornas tillgänglighet | `python -m scripts.probe_sources` |
 | Insamling, dubbletter, exkludering, matchning | 1 078 verkliga annonser genom hela kedjan |
 | IVO-ärendet | Genomgånget i webbläsaren: status `REQUEST_READY`, inget namn registrerat, utkast till registrator med rätt text |
-| Hela API:et | 41 slutpunkter, 138 tester |
+| Hela API:et | 41 slutpunkter, 151 tester |
 | Frontend | 13 sidor byggda, 0 sårbarheter i `npm audit` |
 | Compose-filen | `docker compose config` utan fel |
 

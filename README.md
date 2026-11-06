@@ -13,6 +13,24 @@ Fyra områden:
    svaret inte går att hitta.
 4. **Market Intelligence** – ramavtal, leverantörer, förmedlare och chefsbyten.
 
+## Installation på egen server
+
+`scripts/installera.sh` är till för att öppnas, fyllas i och köras på servern:
+
+```bash
+scp scripts/installera.sh du@din.server:/tmp/
+ssh du@din.server
+sudo bash /tmp/installera.sh --kontroll   # duger servern? svarar bara ja eller nej
+sudo bash /tmp/installera.sh              # installerar
+```
+
+Rutan i filens början är allt som ska fyllas i: adress, din e-post, katalog.
+Lösenord och nycklar står inte där – skriptet slumpar dem, skriver dem i `.env`
+med rättigheter 600 och visar admin-lösenordet en gång. `--kontroll` svarar också
+på frågan om tjänsten räcker: ett webbhotell med FTP kör inte Docker, har ingen
+PostgreSQL och får inte ha processer som ligger kvar, och systemet behöver alla
+tre. Det krävs en VPS eller dedikerad server med SSH och root.
+
 ## Snabbstart
 
 Kräver Docker och Docker Compose.
@@ -70,6 +88,14 @@ docker compose run --rm api python -m app.cli collect jobtech_live
 # alla källor som har läge OPEN_API eller PUBLIC_HTML
 docker compose run --rm api python -m app.cli collect --all
 
+# svep per myndighet i stället för per sökord -- den vägen som inte beror på
+# att någon gissat rätt titel i förväg. Kör nattligt av beat.
+docker compose run --rm api python -m app.cli collect jobtech_hist --authorities
+
+# kör exkluderingsfiltret igen på det som redan ligger i databasen, efter att
+# en regel ändrats. --dry-run visar vad som skulle ändras.
+docker compose run --rm api python -m app.cli reassess --dry-run
+
 # visa vilka källor som fungerar
 docker compose run --rm api python -m app.cli sources
 
@@ -84,7 +110,7 @@ Schemalagd insamling sköts av `worker` och `beat`. Scheman i
 
 ```bash
 cd backend
-pytest -q                 # 138 tester mot SQLite, kräver ingen databas
+pytest -q                 # 151 tester mot SQLite, kräver ingen databas
 pytest -q -m integration  # 6 tester mot verkliga API:er, kräver nätverk
 ```
 
@@ -99,7 +125,7 @@ körda 2026-11-06: 6 gröna på 188 sekunder.
 |---|---|
 | `backend/scripts/probe_sources.py` | Provar varje källa på riktigt och skriver ut vad den svarade. Kontaktar inte källor som står som `MANUAL_ONLY` eller `BLOCKED`. |
 | `backend/scripts/gen_enums.py` | Genererar `frontend/lib/enums.ts` ur `app/models/enums.py`. |
-| `backend/scripts/gen_migration.py` | Genererar `alembic/versions/0001_initial.py` ur modellerna. |
+| `backend/scripts/gen_migration.py` | Genererar `migrations/versions/0001_initial.py` ur modellerna. |
 | `backend/scripts/harvest_authorities.py` | Bygger myndighetsregistret ur verkliga JobTech-annonser. |
 | `scripts/backup.sh` | `pg_dump` till `backups/`, med gallring. |
 | `scripts/restore_test.sh` | Återställer senaste dumpen i en tillfällig databas och räknar rader. En säkerhetskopia ingen har återställt är inte en säkerhetskopia. |
@@ -111,7 +137,7 @@ Två filer är genererade och ska inte ändras för hand:
 ```bash
 cd backend
 python -m scripts.gen_enums      # frontend/lib/enums.ts
-python -m scripts.gen_migration  # alembic/versions/0001_initial.py
+python -m scripts.gen_migration  # migrations/versions/0001_initial.py
 ```
 
 `enums.ts` genereras därför att handskrivna TypeScript-unioner glider från
@@ -150,7 +176,7 @@ inte går att prova på en Windows-maskin utan Docker.
 
 | Flöde | När | Vad det provar |
 |---|---|---|
-| `ci.yml` | varje push och PR | ruff, 138 tester mot SQLite, att de genererade filerna är i fas med modellerna, och `alembic upgrade head` mot **PostgreSQL 17 med pgvector** – inklusive att `opportunities.embedding` blir `vector` och inte `json`, att check-villkoren vägrar ett `EXCLUDED` utan citat, och att `alembic downgrade base` lämnar schemat tomt |
+| `ci.yml` | varje push och PR | ruff, 151 tester mot SQLite, att de genererade filerna är i fas med modellerna, och `alembic upgrade head` mot **PostgreSQL 17 med pgvector** – inklusive att `job_ads.embedding` blir `vector` och inte `json`, att check-villkoren vägrar ett `EXCLUDED` utan citat, och att `alembic downgrade base` lämnar schemat tomt |
 | `stack.yml` | push som rör koden, samt söndagar | bygger båda containerbilderna, startar alla sex tjänsterna, kör migreringen i containern, seedar, loggar in genom `web → api`, kontrollerar att IVO-ärendet står kvar som obesvarat och att en begäran inte kan markeras som skickad utan godkännande, och kör **säkerhetskopia plus återställningsprov** på riktigt |
 | `kallor.yml` | måndagar | `probe_sources.py` och de 6 integrationstesterna mot JobTech och TED. Öppnar ett ärende när en källa som står som `ACTIVE` slutat svara |
 

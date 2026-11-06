@@ -53,6 +53,10 @@ class Settings(BaseSettings):
     login_attempts_per_window: int = 5
     login_window_minutes: int = 15
     api_rate_limit: str = "120/minute"
+    # Av i testerna. Med granskontrollen pa raknas varje anrop fran samma
+    # adress, och en testsvit som gor hundra anrop i rad skulle sla i taket
+    # och falla pa 429 i stallet for pa det den provar.
+    rate_limit_enabled: bool = True
 
     # --- AI ---
     # Tom nyckel ar ett giltigt lage. Systemet faller tillbaka pa regler.

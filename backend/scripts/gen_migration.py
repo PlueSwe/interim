@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import datetime as dt
 import pathlib
+import subprocess
 import sys
 
 from sqlalchemy.dialects import postgresql
@@ -29,7 +30,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from app.models import Base  # noqa: E402
 
 REVISION = "0001"
-UT = pathlib.Path(__file__).resolve().parents[1] / "alembic" / "versions" / "0001_initial.py"
+UT = pathlib.Path(__file__).resolve().parents[1] / "migrations" / "versions" / "0001_initial.py"
 
 HUVUD = '''"""Grundschema.
 
@@ -139,6 +140,13 @@ def main() -> int:
 
     UT.parent.mkdir(parents=True, exist_ok=True)
     UT.write_text(text, encoding="utf-8")
+
+    # Formatera resultatet. Utan det har steget skiljer sig filen pa disk fran
+    # vad skriptet skriver, sa fort nagon kort "ruff format" over projektet --
+    # och CI-jobbet som genererar om och jamfor blev rott pa radbrytningar som
+    # inte sager nagot om schemat.
+    if subprocess.run(["ruff", "format", "--quiet", str(UT)], check=False).returncode:
+        print("  varning: 'ruff format' gick inte att kora, filen ar oformaterad")
     print(f"skrev {UT.relative_to(UT.parents[2])}")
     print(f"  {len(tabeller)} tabeller, {len(index)} index, dialekt {dialekt.name}")
     return 0

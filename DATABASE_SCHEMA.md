@@ -1,7 +1,7 @@
 # Databasschema – Interim Radar
 
 PostgreSQL 17 med `pgvector` och svensk fulltextkonfiguration. Definitionerna finns i
-`backend/app/models/` och migreringen i `backend/alembic/versions/`. Tabellerna nedan
+`backend/app/models/` och migreringen i `backend/migrations/versions/`. Tabellerna nedan
 är grupperade efter vad de svarar på, inte efter skapandeordning.
 
 Alla tidsstämplar är `timestamptz` och lagras i UTC. Visning i svensk lokaltid sker i

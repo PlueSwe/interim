@@ -63,7 +63,7 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 # Migreringen ar genererad och innehaller radata-DDL. Att bryta de raderna
 # skulle gora dem svarare att jamfora med det modellerna faktiskt sager.
-"alembic/versions/*.py" = ["E501"]
+"migrations/versions/*.py" = ["E501"]
 
 [tool.setuptools.packages.find]
 include = ["app*"]

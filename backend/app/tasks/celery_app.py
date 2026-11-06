@@ -48,6 +48,12 @@ def collect_source_task(source_key: str, **kwargs) -> dict:
         return jobs.collect_source(s, source_key, **kwargs)
 
 
+@celery_app.task(name="sweep_authorities", **RETRY)
+def sweep_authorities_task(source_key: str = "jobtech_hist", limit: int | None = None) -> dict:
+    with session_scope() as s:
+        return jobs.sweep_authorities(s, source_key=source_key, limit=limit)
+
+
 @celery_app.task(name="collect_authority_pages", **RETRY)
 def collect_authority_pages_task(limit: int = 20) -> dict:
     with session_scope() as s:
@@ -110,6 +116,22 @@ celery_app.conf.beat_schedule = {
         "task": "collect_source",
         "schedule": crontab(minute=0, hour=3),
         "args": ("jobtech_hist",),
+    },
+    # Nattligt svep over myndighetsregistret, per organisationsnummer.
+    #
+    # Tva korningar med olika kalla, eftersom de svarar pa olika fragor: den
+    # levande visar vad som gar att soka nu, den historiska vilka rekryteringar
+    # som avslutats och darmed ska foljas mot en tillsattning. Svepet ar det som
+    # gor att en tjanst med en oforutsagbar titel anda kommer in.
+    "sweep-authorities-live": {
+        "task": "sweep_authorities",
+        "schedule": crontab(minute=0, hour=1),
+        "kwargs": {"source_key": "jobtech_live"},
+    },
+    "sweep-authorities-historical": {
+        "task": "sweep_authorities",
+        "schedule": crontab(minute=30, hour=3),
+        "kwargs": {"source_key": "jobtech_hist"},
     },
     # En gang per dygn: myndigheternas karriarsidor.
     "authority-pages": {

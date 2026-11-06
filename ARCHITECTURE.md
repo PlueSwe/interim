@@ -78,7 +78,16 @@ SECURITY.md.
    först, AI bara för det regler inte klarar, och AI-svaret sparas med modellnamn och
    tidpunkt.
 5. **Exkluderingsfilter.** `core/exclusion.py` körs alltid, före matchning. Utfall
-   PASS, REVIEW_REQUIRED eller EXCLUDED, med citat och regel-id.
+   PASS, REVIEW_REQUIRED eller EXCLUDED, med citat och regel-id. Filtret skiljer på
+   tre saker som är lätta att blanda ihop: ett *uttryckligt* krav på personkontroll
+   (exkluderas), ett *villkorat* krav – *"kan komma att genomföras"*, *"i vissa
+   fall"* – som blir REVIEW_REQUIRED eftersom det varken är ett krav eller något
+   säkert, och *vanliga* säkerhetsord som informationssäkerhet, GDPR och sekretess
+   som inte exkluderar något. Villkorsordet räknas bara i samma sats som kravet, och
+   ett ovillkorat krav vinner alltid över ett villkorat i samma text.
+   `python -m app.cli reassess` kör filtret igen på sparade uppdrag när en regel
+   ändrats; varje ombedömning blir en ny rad och ett utfall som en människa satt rörs
+   inte.
 6. **Matchning.** `core/matching.py` ger 0–100 med delpoäng per kriterium och en
    läsbar förklaring. En EXCLUDED-post matchas inte.
 7. **Avisering.** Tröskelstyrd, kö i `notifications`.
