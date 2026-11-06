@@ -77,8 +77,15 @@ WRONG_KIND_OF_CHEF = re.compile(
 
 # Utesluter roller som innehaller IT-ord men inte ar ledningsroller. Utan dessa
 # klassas varje "IT-tekniker" som IT-ledning via OTHER_LEADERSHIP.
+#
+# Ordgränsen sitter bara i slutet, med flit. Svenska sätter ihop ord:
+# "IT-säkerhetsspecialist" och "systemtekniker" är yrkesorden med ett förled,
+# och ett `\b` framför "specialist" kräver att ordet står för sig självt. Därför
+# slank *Taktisk och operativ IT-säkerhetsspecialist* förbi spärren, och
+# brödtextens IT-ord gjorde den till IT-ledning. Slutgränsen behålls däremot:
+# "specialistenhet" och "teknikerutbildning" är inte titlar på en sökande.
 NOT_LEADERSHIP = re.compile(
-    r"\b(utvecklare|tekniker|supporttekniker|systemadministrat[öo]r|konsultm[äa]klare"
+    r"(utvecklare|tekniker|systemadministrat[öo]r|konsultm[äa]klare"
     r"|testare|specialist|handl[äa]ggare|assistent|praktikant|student"
     r"|projektledare|produkt[äa]gare|scrum master|designer|analytiker)\b",
     re.IGNORECASE,

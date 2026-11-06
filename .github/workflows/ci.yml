@@ -86,7 +86,9 @@ jobs:
 
       - name: Installera
         working-directory: backend
-        run: pip install -e "."
+        # ruff behovs: gen_migration.py formaterar filen den skriver, annars
+        # skiljer den sig fran disken sa fort nagon kort formatteraren.
+        run: pip install -e "." ruff
 
       - name: Generera om och jamfor
         working-directory: backend

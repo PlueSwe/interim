@@ -119,6 +119,16 @@ services:
     # beat schemalagger bara; den hamtar ingenting sjalv.
     volumes:
       - beatdata:/app/data
+    # Avbildens healthcheck fragar curl om /health, vilket passar api men inte
+    # beat: har kor ingen webbserver, sa containern var evigt "unhealthy" och
+    # "docker compose up --wait" gav upp pa den. beat har inget vettigt att
+    # halsokontrollera inifran heller -- den svarar inte pa "celery inspect"
+    # som worker gor, och dor processen avslutas containern, vilket Docker redan
+    # ser. Att beat faktiskt lagger ut jobb syns i stallet pa att
+    # collection_runs fylls pa, och check_source_health larmar nar en kalla
+    # slutat svara.
+    healthcheck:
+      disable: true
     depends_on:
       redis:
         condition: service_healthy

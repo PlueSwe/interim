@@ -145,8 +145,13 @@ def main() -> int:
     # vad skriptet skriver, sa fort nagon kort "ruff format" over projektet --
     # och CI-jobbet som genererar om och jamfor blev rott pa radbrytningar som
     # inte sager nagot om schemat.
-    if subprocess.run(["ruff", "format", "--quiet", str(UT)], check=False).returncode:
-        print("  varning: 'ruff format' gick inte att kora, filen ar oformaterad")
+    try:
+        klar = subprocess.run(["ruff", "format", "--quiet", str(UT)], check=False)
+    except FileNotFoundError:
+        print("  varning: ruff ar inte installerad, filen ar oformaterad")
+    else:
+        if klar.returncode:
+            print("  varning: 'ruff format' misslyckades, filen ar oformaterad")
     print(f"skrev {UT.relative_to(UT.parents[2])}")
     print(f"  {len(tabeller)} tabeller, {len(index)} index, dialekt {dialekt.name}")
     return 0

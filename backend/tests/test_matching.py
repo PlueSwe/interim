@@ -238,3 +238,55 @@ def test_sparren_tar_inte_med_sig_riktiga_chefsroller(titel, vantad):
 
     familj, skal, _ = classify_role(titel, None)
     assert familj is vantad, f"{titel}: {familj} ({skal})"
+
+
+# --- Sammansatta yrkestitlar --------------------------------------------------
+#
+# Samma sort fel som kockarna, men svarare att se: sparren NOT_LEADERSHIP hade
+# en ordgrans framfor yrkesordet, och svenska satter ihop ord. "specialist" med
+# \b framfor matchar inte "IT-sakerhetsspecialist", sa titeln raknades som
+# otydlig, brodtextens IT-ord fick avgora, och en specialisttjanst hamnade i
+# uppdragslistan som IT-ledning.
+
+IT_BRODTEXT = (
+    "Du arbetar med IT-arkitektur och IT-säkerhet i en stab som leds av "
+    "IT-direktören. I rollen samarbetar du med verksamheten och IT-chefen om "
+    "arkitekturstyrning, informationssäkerhet och digitalisering."
+)
+
+
+@pytest.mark.parametrize(
+    "titel",
+    [
+        "Taktisk och operativ IT-säkerhetsspecialist",
+        "Informationssäkerhetsspecialist",
+        "Systemtekniker IT-drift",
+        "Verksamhetsutvecklare digitalisering",
+        "IAM-specialist",
+    ],
+)
+def test_sammansatt_specialisttitel_ar_inte_ledning(titel: str) -> None:
+    """Brödtextens IT-ord får inte göra en specialist till IT-chef."""
+    from app.core.classify import classify_role
+
+    familj, skal, _ = classify_role(titel, IT_BRODTEXT)
+
+    assert familj is RoleFamily.NOT_RELEVANT, f"{titel} klassades som {familj.value}: {skal}"
+
+
+@pytest.mark.parametrize(
+    "titel,vantad",
+    [
+        ("Chef till enheten för IT-arkitektur och IT-säkerhet", RoleFamily.ARCHITECTURE_MANAGER),
+        ("IT-chef", RoleFamily.IT_MANAGER),
+        ("Verksamhetsområdeschef Digitalisering och IT", RoleFamily.DIGITALISATION_MANAGER),
+        # Ordet "specialist" star har inuti ett annat ord och ar inte titeln.
+        ("Chef för IT-specialistenheten", RoleFamily.IT_MANAGER),
+    ],
+)
+def test_specialistsparren_tar_inte_med_sig_chefsroller(titel: str, vantad: RoleFamily) -> None:
+    from app.core.classify import classify_role
+
+    familj, skal, _ = classify_role(titel, IT_BRODTEXT)
+
+    assert familj is vantad, f"{titel} blev {familj.value}: {skal}"

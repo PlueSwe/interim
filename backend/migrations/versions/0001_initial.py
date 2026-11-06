@@ -8,7 +8,7 @@ Tabeller: 25
 
 Revision ID: 0001
 Revises: None
-Create Date: 2026-11-06 16:48:10+00:00
+Create Date: 2026-11-06 17:18:12+00:00
 """
 
 from __future__ import annotations

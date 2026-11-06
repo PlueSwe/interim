@@ -236,7 +236,14 @@ jobs:
       - name: Worker och beat lever
         run: |
           docker compose exec -T worker celery -A app.tasks.celery_app inspect ping
-          docker compose logs beat --tail 20
+
+          # beat har ingen healthcheck (se kommentaren i docker-compose.yml),
+          # sa den kontrolleras pa loggen i stallet. Utan det har steget skulle
+          # en beat som inte startar passera obemarkt, och da gar ingen
+          # schemalagd insamling -- systemets hela varde.
+          docker compose logs beat --tail 50
+          docker compose logs beat 2>&1 | grep -qi "beat: Starting"             || { echo "::error::beat startade inte"; exit 1; }
+          docker compose logs beat 2>&1 | grep -qiE "Scheduler: Sending|schedule"             || echo "::warning::beat har inte hunnit skicka nagot jobb an"
 
       - name: Sakerhetskopia och aterstallningsprov
         run: |
