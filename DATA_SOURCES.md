@@ -134,6 +134,35 @@ Seedningen skrev tidigare organisationens startsida in i `careers_url`, vilket g
 verifiering med `python -m app.cli verify-authority`; adressen ur annonsen ligger
 kvar på `organisations.website`.
 
+### Rättelse 2026-11-06, insamlingsvägen
+
+Insamlingen gick bara via 19 fritextfraser och 2 yrkesbegrepp. Det räcker inte,
+och felet är inte att listan är för kort – det är att en sökordslista aldrig kan
+bli tillräckligt lång. Statens titlar ser ut så här:
+
+- *Chef till enheten för IT-arkitektur och IT-säkerhet* (Statens fastighetsverk)
+- *Verksamhetsområdeschef Digitalisering och IT* (IVO)
+- *Chef för enheten för digital infrastruktur*
+
+Den första missades i oktober 2026, trots att `chef IT-arkitektur` finns i listan:
+annonsen var avpublicerad, och den historiska källan hade aldrig körts och saknade
+tidsfönster. Två vägar in finns nu, och de kompletterar varandra:
+
+| Väg | Vad den hittar | Svaghet |
+|---|---|---|
+| Sökord och yrkesbegrepp | Annonser från alla arbetsgivare, även privata förmedlare | Beror på att någon gissat rätt titel i förväg |
+| Svep per myndighet (`collect --authorities`) | Allt en myndighet annonserat, oavsett titel – klassificeringen avgör sedan | Bara de 384 organisationsnummer som finns i registret |
+
+Svepet frågar `employer=<organisationsnummer>` per myndighet. Numret måste skickas
+utan bindestreck: `202100-4474` ger **0 träffar utan felkod**, vilket är värsta
+sortens svar – det ser ut som att myndigheten inte annonserar något. Adaptern
+normaliserar numret innan den frågar, och sju tester i
+`tests/test_sources_jobtech.py` provar vad adaptern faktiskt frågar efter.
+
+Den historiska källan har nu också ett fönster, `HISTORICAL_DAYS = 180`. Utan det
+gav `q="IT-chef"` 4 656 träffar sedan 2016, pagineringstaket hämtade 1 000 av dem,
+och API:ets ordning avgjorde vilka – inte datumet.
+
 ## Rekryteringsplattformar
 
 Varbi, ReachMee, Teamtailor, Visma Recruit och Jobylon är system som myndigheterna

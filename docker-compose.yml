@@ -119,16 +119,30 @@ services:
     # beat schemalagger bara; den hamtar ingenting sjalv.
     volumes:
       - beatdata:/app/data
-    # Avbildens healthcheck fragar curl om /health, vilket passar api men inte
-    # beat: har kor ingen webbserver, sa containern var evigt "unhealthy" och
-    # "docker compose up --wait" gav upp pa den. beat har inget vettigt att
-    # halsokontrollera inifran heller -- den svarar inte pa "celery inspect"
-    # som worker gor, och dor processen avslutas containern, vilket Docker redan
-    # ser. Att beat faktiskt lagger ut jobb syns i stallet pa att
-    # collection_runs fylls pa, och check_source_health larmar nar en kalla
-    # slutat svara.
+    # Avbildens healthcheck fragar curl om /health. Det passar api men inte
+    # beat, som inte kor nagon webbserver -- containern blev evigt "unhealthy"
+    # och "docker compose up --wait" gav upp pa den.
+    #
+    # Att stanga av healthchecken loste inte saken: --wait vagrar ocksa pa en
+    # tjanst *utan* healthcheck ("has no healthcheck configured"). beat behover
+    # alltsa en egen, och den provar de tva saker som gar att prova inifran:
+    #
+    #   1. att processen med PID 1 fortfarande ar celery (dor den avslutas
+    #      containern, vilket Docker redan ser)
+    #   2. att schemafilen finns -- en beat som faller pa import hinner aldrig
+    #      skapa den, och det ar det vanliga felet
+    #
+    # Filnamnet globbas eftersom shelve lagger till andelse beroende pa vilken
+    # dbm-modul som finns. Mtime provas med flit inte: beat synkar var tredje
+    # minut, och en tidsgrans dar hade gjort halsokontrollen flakig.
     healthcheck:
-      disable: true
+      test:
+        - CMD-SHELL
+        - grep -q celery /proc/1/cmdline && ls /app/data/celerybeat-schedule* > /dev/null 2>&1
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 45s
     depends_on:
       redis:
         condition: service_healthy
