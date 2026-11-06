@@ -10,6 +10,9 @@
 #        sudo bash /tmp/installera.sh --kontroll    # svarar bara: duger servern?
 #        sudo bash /tmp/installera.sh               # installerar pa riktigt
 #
+#   Saknas bara Docker skriver --kontroll ut kommandona for distributionen, och
+#   `sudo bash /tmp/installera.sh --installera-docker` kor dem.
+#
 # Losenord och nycklar fylls INTE i har. Skriptet slumpar dem, skriver dem i
 # .env med rattigheter 600 och visar admin-losenordet en gang pa skarmen. Ett
 # losenord i en fil som ligger kvar i /tmp ar inget losenord, och den har filen
@@ -59,7 +62,15 @@ ADMIN_LOSENORD=""
 set -euo pipefail
 
 BARA_KONTROLL=0
-[ "${1:-}" = "--kontroll" ] && BARA_KONTROLL=1
+FIXA_DOCKER=0
+case "${1:-}" in
+  --kontroll) BARA_KONTROLL=1 ;;
+  --installera-docker) FIXA_DOCKER=1 ;;
+  "") ;;
+  *) printf 'Okand flagga: %s
+Anvand --kontroll, --installera-docker eller inget alls.
+' "$1" >&2; exit 2 ;;
+esac
 
 gron() { printf '\033[32m%s\033[0m\n' "$*"; }
 rod() { printf '\033[31m%s\033[0m\n' "$*"; }
@@ -67,17 +78,113 @@ rubrik() { printf '\n\033[1m== %s ==\033[0m\n' "$*"; }
 fel() { rod "FEL: $*"; exit 1; }
 
 
+# ------------------------------------------------------------------ docker
+# Docker installeras inte av sig sjalv, och kommandona skiljer sig mellan
+# Ubuntu/Debian och Oracle Linux/RHEL. Vi skriver ut dem for ratt distribution
+# i stallet for att gissa, och kan kora dem pa begaran.
+
+distro() {
+  # shellcheck source=/dev/null
+  [ -r /etc/os-release ] && . /etc/os-release
+  case "${ID:-}${ID_LIKE:-}" in
+    *ubuntu*) echo ubuntu ;;
+    *debian*) echo debian ;;
+    *rhel* | *fedora* | *ol*) echo rhel ;;
+    *) echo okand ;;
+  esac
+}
+
+docker_kommandon() {
+  case "$(distro)" in
+    ubuntu | debian)
+      D=$(distro)
+      cat << KOM
+  sudo apt-get update
+  sudo apt-get install -y ca-certificates curl
+  sudo install -m 0755 -d /etc/apt/keyrings
+  sudo curl -fsSL https://download.docker.com/linux/$D/gpg -o /etc/apt/keyrings/docker.asc
+  sudo chmod a+r /etc/apt/keyrings/docker.asc
+  echo "deb [arch=\$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/$D \$(. /etc/os-release && echo \$VERSION_CODENAME) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+  sudo apt-get update
+  sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  sudo systemctl enable --now docker
+KOM
+      ;;
+    rhel)
+      cat << 'KOM'
+  sudo dnf -y install dnf-plugins-core
+  sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  sudo dnf -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+  sudo systemctl enable --now docker
+KOM
+      # Oracle Linux har podman forinstallerat. Det ar inte samma sak:
+      # docker-compose-plugin finns inte for podman, och stacken anvander det.
+      if command -v podman > /dev/null 2>&1; then
+        echo
+        echo "  (podman ar forinstallerat men duger inte -- stacken behover docker compose v2)"
+      fi
+      ;;
+    *)
+      echo "  Okand distribution. Folj https://docs.docker.com/engine/install/"
+      echo "  och installera docker-ce och docker-compose-plugin."
+      ;;
+  esac
+}
+
+installera_docker() {
+  rubrik "Installerar Docker"
+  [ "$(id -u)" -eq 0 ] || fel "kor med sudo: sudo bash $0 --installera-docker"
+  case "$(distro)" in
+    ubuntu | debian)
+      D=$(distro)
+      export DEBIAN_FRONTEND=noninteractive
+      apt-get update
+      apt-get install -y ca-certificates curl
+      install -m 0755 -d /etc/apt/keyrings
+      curl -fsSL "https://download.docker.com/linux/$D/gpg" -o /etc/apt/keyrings/docker.asc
+      chmod a+r /etc/apt/keyrings/docker.asc
+      ARKITEKTUR=$(dpkg --print-architecture)
+      KODNAMN=$(. /etc/os-release && echo "$VERSION_CODENAME")
+      REPO="https://download.docker.com/linux/$D"
+      echo "deb [arch=$ARKITEKTUR signed-by=/etc/apt/keyrings/docker.asc] $REPO $KODNAMN stable" \
+        > /etc/apt/sources.list.d/docker.list
+      apt-get update
+      apt-get install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+      ;;
+    rhel)
+      dnf -y install dnf-plugins-core
+      dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+      dnf -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+      ;;
+    *)
+      fel "kanner inte igen distributionen. Kommandona star i --kontroll."
+      ;;
+  esac
+  systemctl enable --now docker
+  docker compose version > /dev/null 2>&1 || fel "docker compose v2 kom inte med. Installera docker-compose-plugin."
+  gron "Docker installerat."
+  echo
+  echo "Kor nu installationen:"
+  echo "  sudo bash $0"
+  exit 0
+}
+
+[ "$FIXA_DOCKER" -eq 1 ] && installera_docker
+
+
 # ---------------------------------------------------------------- kontroll
 rubrik "Kontrollerar servern"
 
 BRIST=0
 DEMONEN_DOD=0
+SAKNAS=""
 kraver() {
   if command -v "$1" > /dev/null 2>&1; then
     gron "  ok      $1"
   else
     rod "  saknas  $1 -- $2"
     BRIST=1
+    SAKNAS="$SAKNAS $1"
   fi
 }
 
@@ -90,8 +197,9 @@ if command -v docker > /dev/null 2>&1; then
   if docker compose version > /dev/null 2>&1; then
     gron "  ok      docker compose"
   else
-    rod "  saknas  docker compose (v2) -- apt install docker-compose-plugin"
+    rod "  saknas  docker compose (v2) -- paketet heter docker-compose-plugin"
     BRIST=1
+    SAKNAS="$SAKNAS docker"
   fi
   if docker info > /dev/null 2>&1; then
     gron "  ok      docker-demonen svarar"
@@ -116,6 +224,16 @@ for PORT in 3000 5432 6379; do
   fi
 done
 
+# Ar Docker det enda som fattas ar det inte ett odugligt serverkonto, bara en
+# maskin dar inget installerats an. Skilj pa de tva: beskeden ar olika.
+SAKNAR_BARA_DOCKER=0
+# `case` delar inte upp ord, sa blanktecknen maste bort forst -- det gor
+# ordsplittingen i ett ociterat `echo`.
+SAKNAS_TRIMMAT=$(echo $SAKNAS)
+case "$SAKNAS_TRIMMAT" in
+  docker) SAKNAR_BARA_DOCKER=1 ;;
+esac
+
 if [ "$BRIST" -ne 0 ] && [ "$DEMONEN_DOD" -eq 1 ]; then
   cat << 'DEMON'
 
@@ -130,19 +248,32 @@ DEMON
 fi
 
 if [ "$BRIST" -ne 0 ]; then
+  if [ "$SAKNAR_BARA_DOCKER" -eq 1 ]; then
+    cat << HJALP
+
+Servern duger i ovrigt -- det ar bara Docker som inte ar installerat an.
+
+Kor ett av de har, beroende pa vad maskinen ar:
+
+$(docker_kommandon)
+
+Eller lat det har skriptet gora det:
+
+  sudo bash $0 --installera-docker
+
+HJALP
+    exit 1
+  fi
   cat << 'HJALP'
 
-Servern kan inte kora det har som den ar nu.
-
-Det vanligaste skalet: tjansten ar ett webbhotell. Ett webbhotell med FTP och
-cPanel kor inte Docker, har ingen PostgreSQL och far inte ha processer som
-ligger kvar och arbetar -- och den har applikationen behover alla tre. FTP
-racker alltsa inte, oavsett hur uppgifterna ser ut.
+Servern kan inte kora det har som den ar nu. Nagot av det som behovs gar inte
+att installera, och da ar det nastan alltid ett webbhotell: ett konto med FTP
+och cPanel kor inte Docker, har ingen PostgreSQL och far inte ha processer som
+ligger kvar och arbetar -- den har applikationen behover alla tre. FTP racker
+alltsa inte, oavsett hur uppgifterna ser ut.
 
 Det som behovs ar en VPS eller en dedikerad server dar du har SSH och root.
-Fraga Oderland vilken av dina tjanster som har det, eller om den kan bytas upp.
-Nar du har SSH och root: installera Docker enligt lanken ovan och kor det har
-skriptet igen.
+
 HJALP
   exit 1
 fi

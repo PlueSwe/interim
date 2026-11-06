@@ -24,6 +24,12 @@ sudo bash /tmp/installera.sh --kontroll   # duger servern? svarar bara ja eller 
 sudo bash /tmp/installera.sh              # installerar
 ```
 
+Saknas bara Docker säger `--kontroll` det, skriver ut kommandona för just den
+distributionen (Ubuntu och Debian får apt-förrådet, Oracle Linux och RHEL får
+dnf-förrådet) och erbjuder `sudo bash /tmp/installera.sh --installera-docker`
+som gör det. En nystartad VPS är inte samma sak som ett odugligt serverkonto,
+och skriptet ska inte svara som om den var det.
+
 Rutan i filens början är allt som ska fyllas i: adress, din e-post, katalog.
 Lösenord och nycklar står inte där – skriptet slumpar dem, skriver dem i `.env`
 med rättigheter 600 och visar admin-lösenordet en gång. `--kontroll` svarar också
