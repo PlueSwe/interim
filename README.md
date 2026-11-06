@@ -31,6 +31,15 @@ på frågan om tjänsten räcker: ett webbhotell med FTP kör inte Docker, har i
 PostgreSQL och får inte ha processer som ligger kvar, och systemet behöver alla
 tre. Det krävs en VPS eller dedikerad server med SSH och root.
 
+### ARM-servrar
+
+Driftservern är en Ampere-maskin (ARM64), och det fungerar: alla fyra
+basavbilder finns för `linux/arm64`, och varje C-beroende – `psycopg-binary`,
+`cryptography`, `argon2-cffi-bindings`, `pydantic-core`, `greenlet` – har
+färdiga aarch64-hjul, så bygget behöver inga kompilatorer. Ett jobb i
+`stack.yml` bygger båda avbilderna för arm64 varje vecka, så att det förblir
+sant. Bygget sker på servern vid installation, så ingen korskompilering behövs.
+
 ## Snabbstart
 
 Kräver Docker och Docker Compose.

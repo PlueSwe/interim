@@ -83,6 +83,44 @@ jobs:
           echo "--- web kor som icke-root? ---"
           docker run --rm --entrypoint id interim-radar-web:latest
 
+  arm:
+    name: Bilderna bygger for arm64
+    # Bara pa schema och manuellt. Bygget gar genom QEMU och tar minuter, inte
+    # sekunder, sa det hor inte hemma i varje push.
+    #
+    # Varfor det finns alls: driftservern ar en ARM-maskin (Ampere), och
+    # skillnaden mot x86 syns forst i bygget. Faller ett Python-hjul tillbaka
+    # pa kallkod behovs kompilatorer som inte finns i avbilden, och da far man
+    # veta det har i stallet for mitt i en installation.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Backend for arm64
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          platforms: linux/arm64
+          cache-from: type=gha,scope=backend-arm64
+          cache-to: type=gha,mode=max,scope=backend-arm64
+          # Rokprovet i Dockerfilen kor som en del av bygget, sa ett bygge som
+          # gar igenom har bevisar ocksa att paketen gar att importera pa ARM.
+          outputs: type=cacheonly
+
+      - name: Frontend for arm64
+        uses: docker/build-push-action@v6
+        with:
+          context: ./frontend
+          platforms: linux/arm64
+          build-args: |
+            API_URL=http://api:8000
+          cache-from: type=gha,scope=web-arm64
+          cache-to: type=gha,mode=max,scope=web-arm64
+          outputs: type=cacheonly
+
   stacken:
     name: Hela stacken
     runs-on: ubuntu-latest
