@@ -1,0 +1,19 @@
+# Allt som inte ska in i byggkontexten. Utan den har filen hamnar lokala
+# SQLite-databaser och snapshots i avbilden, och demo.db innehaller riktiga
+# insamlade annonser.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+*.db
+*.sqlite3
+# Snapshots ar radata och hor inte i avbilden -- utom IVO-annonsen, som
+# bestallningens testfall bygger pa. Utan den kan "app.cli seed" inte seeda
+# IVO-arendet i containern, och det syns forst som ett tomt testfall.
+data/snapshots/*
+!data/snapshots/ivo-vochef-digitalisering-it-2026-08-20.json
+.env
+.env.*
+!.env.example

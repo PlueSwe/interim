@@ -1,0 +1,5032 @@
+{
+ "harvested_at": "2026-11-06T14:45:53.605918+00:00",
+ "source": "JobTech Dev (jobsearch + historical), oppna data",
+ "method": "Arbetsgivare ur annonser, filtrerade pa Skatteverkets nummerserier 2021/2120/2321. Inga nummer ar gissade.",
+ "count": 384,
+ "authorities": [
+  {
+   "name": "Försvarsmakten",
+   "org_number": "2021004615",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.forsvarsmakten.se/",
+   "ad_count": 120,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Försvarsmakten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kriminalvården",
+   "org_number": "2021000225",
+   "org_type": "STATE_AGENCY",
+   "website": "http://kriminalvarden.varbi.com",
+   "ad_count": 101,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Kriminalvården"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Polismyndigheten",
+   "org_number": "2021000076",
+   "org_type": "STATE_AGENCY",
+   "website": "www.polisen.se",
+   "ad_count": 93,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "POLISMYNDIGHETEN",
+    "Polismyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "VÄSTRA GÖTALANDSREGIONEN",
+   "org_number": "2321000131",
+   "org_type": "REGION",
+   "website": "http://www.vgregion.se/sokjobb",
+   "ad_count": 90,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "VÄSTRA GÖTALANDSREGIONEN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Göteborgs kommun",
+   "org_number": "2120001355",
+   "org_type": "MUNICIPALITY",
+   "website": "https://goteborg.se/wps/portal/start/jobba-i-goteborgs-stad/lediga-jobb",
+   "ad_count": 72,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "GÖTEBORGS KOMMUN",
+    "Göteborgs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Folkhälsomyndigheten",
+   "org_number": "2021006545",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.folkhalsomyndigheten.se",
+   "ad_count": 65,
+   "latest_ad": "2024-12-19",
+   "name_variants": [
+    "Folkhälsomyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tillväxtverket",
+   "org_number": "2021006149",
+   "org_type": "STATE_AGENCY",
+   "website": "https://tillvaxtverket.se/",
+   "ad_count": 62,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Tillväxtverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Göteborgs Universitet",
+   "org_number": "2021003153",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.gu.se/",
+   "ad_count": 58,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "GÖTEBORGS UNIVERSITET",
+    "Göteborgs Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Regeringskansliet",
+   "org_number": "2021003831",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.regeringen.se/",
+   "ad_count": 53,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Regeringskansliet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Transportstyrelsen",
+   "org_number": "2021006099",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.transportstyrelsen.se/",
+   "ad_count": 53,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Transportstyrelsen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sveriges Domstolar",
+   "org_number": "2021002742",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.domstol.se/hovratten-for-nedre-norrland/",
+   "ad_count": 45,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Sveriges Domstolar"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Uppsala Universitet",
+   "org_number": "2021002932",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.uu.se/jobb/",
+   "ad_count": 45,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "UPPSALA UNIVERSITET",
+    "Uppsala Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Trafikverket",
+   "org_number": "2021006297",
+   "org_type": "STATE_AGENCY",
+   "website": "www.trafikverket.se",
+   "ad_count": 43,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Trafikverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Stockholms Universitet",
+   "org_number": "2021003062",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.su.se",
+   "ad_count": 37,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "STOCKHOLMS UNIVERSITET",
+    "Stockholms Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Stockholms kommun",
+   "org_number": "2120000142",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.stockholm.se/Arbete/Lediga-jobb-och-praktik/",
+   "ad_count": 35,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Stockholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kronofogdemyndigheten",
+   "org_number": "2021005646",
+   "org_type": "STATE_AGENCY",
+   "website": "https://kronofogden.se/jobba-hos-oss/lediga-jobb",
+   "ad_count": 29,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "KRONOFOGDEMYNDIGHETEN",
+    "Kronofogdemyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten för civilt försvar",
+   "org_number": "2021005984",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.mcf.se/sv/om-oss/jobba-hos-oss/lediga-jobb/",
+   "ad_count": 29,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Myndigheten För Samhällsskydd och Beredskap (Msb",
+    "Myndigheten för civilt försvar"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION STOCKHOLM",
+   "org_number": "2321000016",
+   "org_type": "REGION",
+   "website": "https://www.regionstockholm.se/jobb/lediga-jobb/",
+   "ad_count": 29,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "REGION STOCKHOLM"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Borås kommun",
+   "org_number": "2120001561",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.boras.se/ledigajobb",
+   "ad_count": 28,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "BORÅS KOMMUN",
+    "Borås kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Inspektionen för vård och omsorg",
+   "org_number": "2021006537",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.ivo.se/",
+   "ad_count": 28,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Inspektionen För Vård och Omsorg",
+    "Inspektionen för vård och omsorg"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION JÖNKÖPINGS LÄN",
+   "org_number": "2321000057",
+   "org_type": "REGION",
+   "website": null,
+   "ad_count": 28,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "REGION JÖNKÖPINGS LÄN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Linköpings Universitet",
+   "org_number": "2021003096",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.liu.se/",
+   "ad_count": 27,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "LINKÖPINGS UNIVERSITET",
+    "Linköpings Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Malmö kommun",
+   "org_number": "2120001124",
+   "org_type": "MUNICIPALITY",
+   "website": "https://malmo.se/",
+   "ad_count": 27,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Malmö kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Migrationsverket",
+   "org_number": "2021002163",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.migrationsverket.se",
+   "ad_count": 26,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "MIGRATIONSVERKET",
+    "Migrationsverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION UPPSALA",
+   "org_number": "2321000024",
+   "org_type": "REGION",
+   "website": null,
+   "ad_count": 26,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "REGION UPPSALA"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Svenska Kraftnät",
+   "org_number": "2021004284",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.svk.se/",
+   "ad_count": 24,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "SVENSKA KRAFTNÄT",
+    "Svenska Kraftnät"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Linnéuniversitetet",
+   "org_number": "2021006271",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.lnu.se",
+   "ad_count": 23,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Linnéuniversitetet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Skolverk",
+   "org_number": "2021004185",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.skolverket.se",
+   "ad_count": 23,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "STATENS SKOLVERK",
+    "Statens Skolverk"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Skatteverket",
+   "org_number": "2021005448",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.skatteverket.se/omoss/jobbahososs/ledigajobb.4.3a2a542410ab40a421c80005924.html",
+   "ad_count": 22,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Skatteverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Västra Götalands län",
+   "org_number": "2021002361",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 21,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Länsstyrelsen i Västra Götalands län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION KALMAR LÄN",
+   "org_number": "2321000073",
+   "org_type": "REGION",
+   "website": "https://regionkalmar.se/",
+   "ad_count": 21,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "REGION KALMAR LÄN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Institutionsstyrelse",
+   "org_number": "2021004508",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.stat-inst.se/",
+   "ad_count": 21,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Statens Institutionsstyrelse"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "E-Hälsomyndigheten",
+   "org_number": "2021006552",
+   "org_type": "STATE_AGENCY",
+   "website": "http://e-halsomyndigheten.varbi.com",
+   "ad_count": 19,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "E-Hälsomyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Gävle kommun",
+   "org_number": "2120002338",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 19,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Gävle kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statistiska Centralbyrån",
+   "org_number": "2021000837",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.scb.se",
+   "ad_count": 19,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Statistiska Centralbyrån"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Försäkringskassan",
+   "org_number": "2021005521",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.forsakringskassan.se/",
+   "ad_count": 18,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Försäkringskassan"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Havs- och Vattenmyndigheten",
+   "org_number": "2021006420",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.havochvatten.se/",
+   "ad_count": 17,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "Havs- och Vattenmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lunds Universitet",
+   "org_number": "2021003211",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.lu.se/vacancies",
+   "ad_count": 17,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Lunds Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION SKÅNE",
+   "org_number": "2321000255",
+   "org_type": "REGION",
+   "website": null,
+   "ad_count": 17,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "REGION SKÅNE"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Åklagarmyndigheten",
+   "org_number": "2021000084",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.aklagare.se",
+   "ad_count": 17,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Åklagarmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Försvarets Radioanstalt",
+   "org_number": "2021000365",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.fra.se",
+   "ad_count": 16,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Försvarets Radioanstalt"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Huddinge kommun",
+   "org_number": "2120000068",
+   "org_type": "MUNICIPALITY",
+   "website": "www.huddinge.se",
+   "ad_count": 16,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "Huddinge kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Luleå kommun",
+   "org_number": "2120002742",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 16,
+   "latest_ad": "2026-01-16",
+   "name_variants": [
+    "Luleå kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Socialstyrelsen",
+   "org_number": "2021000555",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.socialstyrelsen.se/",
+   "ad_count": 16,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "Socialstyrelsen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Umeå Universitet",
+   "org_number": "2021002874",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.umu.se/jobba-hos-oss/",
+   "ad_count": 15,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "UMEÅ UNIVERSITET",
+    "Umeå Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lunds kommun",
+   "org_number": "2120001132",
+   "org_type": "MUNICIPALITY",
+   "website": "https://lund.se/arbete-och-lediga-jobb",
+   "ad_count": 14,
+   "latest_ad": "2026-10-30",
+   "name_variants": [
+    "Lunds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION GOTLAND",
+   "org_number": "2120000803",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.gotland.se/ledigajobb",
+   "ad_count": 14,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "REGION GOTLAND"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION KRONOBERG",
+   "org_number": "2321000065",
+   "org_type": "REGION",
+   "website": "http://bit.ly/4i8uStS",
+   "ad_count": 14,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "REGION KRONOBERG"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION NORRBOTTEN",
+   "org_number": "2321000230",
+   "org_type": "REGION",
+   "website": "http://norrbotten.varbi.com",
+   "ad_count": 14,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "REGION NORRBOTTEN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Försvarets Materielverk",
+   "org_number": "2021000340",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.fmv.se",
+   "ad_count": 12,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Försvarets Materielverk"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Karlstads kommun",
+   "org_number": "2120001850",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 12,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Karlstads kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kungsbacka kommun",
+   "org_number": "2120001256",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.kungsbacka.se/Kommun-och-politik/Lediga-jobb/Vara-lediga-jobb/",
+   "ad_count": 12,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Kungsbacka kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Linköpings kommun",
+   "org_number": "2120000449",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.linkoping.se/",
+   "ad_count": 12,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Linköpings kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Karolinska Inst",
+   "org_number": "2021002973",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 11,
+   "latest_ad": "2025-11-25",
+   "name_variants": [
+    "Karolinska Inst"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lerums kommun",
+   "org_number": "2120001447",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 11,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Lerums kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION DALARNA",
+   "org_number": "2321000180",
+   "org_type": "REGION",
+   "website": "https://www.regiondalarna.se/",
+   "ad_count": 11,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "REGION DALARNA"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Säkerhetspolisen",
+   "org_number": "2021006594",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 11,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Säkerhetspolisen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "TULLVERKET",
+   "org_number": "2021000969",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.tullverket.se/",
+   "ad_count": 11,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "TULLVERKET"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Västerås kommun",
+   "org_number": "2120002080",
+   "org_type": "MUNICIPALITY",
+   "website": "https://vasteras.varbi.com",
+   "ad_count": 11,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Västerås kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Boverket",
+   "org_number": "2021003989",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 10,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Boverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Inspektionen För Strategiska Produkter",
+   "org_number": "2021004912",
+   "org_type": "STATE_AGENCY",
+   "website": "https://isp.se/",
+   "ad_count": 10,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Inspektionen För Strategiska Produkter"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Naturvårdsverket",
+   "org_number": "2021001975",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.naturvardsverket.se/",
+   "ad_count": 10,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Naturvårdsverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION SÖRMLAND",
+   "org_number": "2321000032",
+   "org_type": "REGION",
+   "website": null,
+   "ad_count": 10,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "REGION SÖRMLAND"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sigtuna kommun",
+   "org_number": "2120000225",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 10,
+   "latest_ad": "2026-10-30",
+   "name_variants": [
+    "Sigtuna kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Skellefteå kommun",
+   "org_number": "2120002643",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 10,
+   "latest_ad": "2024-03-15",
+   "name_variants": [
+    "Skellefteå kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Strålsäkerhetsmyndigheten",
+   "org_number": "2021005737",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.stralsakerhetsmyndigheten.se/",
+   "ad_count": 10,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Strålsäkerhetsmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sveriges Lantbruksuniversitet",
+   "org_number": "2021002817",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.slu.se",
+   "ad_count": 10,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "SVERIGES LANTBRUKSUNIVERSITET",
+    "Sveriges Lantbruksuniversitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Universitets- och Högskolerådet",
+   "org_number": "2021006487",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.uhr.se",
+   "ad_count": 10,
+   "latest_ad": "2026-10-22",
+   "name_variants": [
+    "Universitets- och Högskolerådet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Halmstads kommun",
+   "org_number": "2120001215",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.halmstad.se/jobbahososs/kommunensomarbetsgivare/halsaochformaner.10693.html",
+   "ad_count": 9,
+   "latest_ad": "2025-06-19",
+   "name_variants": [
+    "Halmstads kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kungliga Tekniska Högskolan",
+   "org_number": "2021003054",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.kth.se/om/work-at-kth/lediga-jobb",
+   "ad_count": 9,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Kungliga Tekniska Högskolan"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Luleå Tekniska Universitet",
+   "org_number": "2021002841",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.ltu.se/",
+   "ad_count": 9,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Luleå Tekniska Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION ÖREBRO LÄN",
+   "org_number": "2321000164",
+   "org_type": "REGION",
+   "website": "https://www.regionorebrolan.se/",
+   "ad_count": 9,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "REGION ÖREBRO LÄN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Riksantikvarieämbetet",
+   "org_number": "2021001090",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.raa.se/",
+   "ad_count": 9,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Riksantikvarieämbetet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Skolinspektion",
+   "org_number": "2021006065",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 9,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Statens Skolinspektion"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Totalförsvarets plikt- och prövningsverk",
+   "org_number": "2021004771",
+   "org_type": "STATE_AGENCY",
+   "website": "https://pliktverket.se/",
+   "ad_count": 9,
+   "latest_ad": "2026-10-26",
+   "name_variants": [
+    "Totalförsvarets plikt- och prövningsverk"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Uppsala kommun",
+   "org_number": "2120003005",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 9,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Uppsala kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Bolagsverket",
+   "org_number": "2021005489",
+   "org_type": "STATE_AGENCY",
+   "website": "https://bolagsverket.se/jobbamedoss.5046.html",
+   "ad_count": 8,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "BOLAGSVERKET",
+    "Bolagsverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Helsingborgs kommun",
+   "org_number": "2120001157",
+   "org_type": "MUNICIPALITY",
+   "website": "https://helsingborg.se/",
+   "ad_count": 8,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Helsingborgs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Jönköpings kommun",
+   "org_number": "2120000530",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.jonkoping.se",
+   "ad_count": 8,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Jönköpings kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Läkemedelsverket",
+   "org_number": "2021004078",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.lakemedelsverket.se/",
+   "ad_count": 8,
+   "latest_ad": "2026-06-10",
+   "name_variants": [
+    "LÄKEMEDELSVERKET",
+    "Läkemedelsverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "MYNDIGHETEN FÖR PSYKOLOGISKT FÖRSVAR",
+   "org_number": "2021007014",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.mpf.se/",
+   "ad_count": 8,
+   "latest_ad": "2026-10-22",
+   "name_variants": [
+    "MYNDIGHETEN FÖR PSYKOLOGISKT FÖRSVAR"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Norrköpings kommun",
+   "org_number": "2120000456",
+   "org_type": "MUNICIPALITY",
+   "website": "https://norrkoping.se/",
+   "ad_count": 8,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Norrköpings kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION HALLAND",
+   "org_number": "2321000115",
+   "org_type": "REGION",
+   "website": "http://www.regionhalland.se/",
+   "ad_count": 8,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "REGION HALLAND"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Riksdagsförvaltningen",
+   "org_number": "2021002627",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.riksdagen.se/",
+   "ad_count": 8,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Riksdagsförvaltningen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sjöfartsverket",
+   "org_number": "2021000654",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.sjofartsverket.se/",
+   "ad_count": 8,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Sjöfartsverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sollentuna kommun",
+   "org_number": "2120000134",
+   "org_type": "MUNICIPALITY",
+   "website": "https://sollentuna.varbi.com",
+   "ad_count": 8,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Sollentuna kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sundsvalls kommun",
+   "org_number": "2120002411",
+   "org_type": "MUNICIPALITY",
+   "website": "http://sundsvall.varbi.com",
+   "ad_count": 8,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Sundsvalls kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Örebro kommun",
+   "org_number": "2120001967",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.orebro.se",
+   "ad_count": 8,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Örebro kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Eskilstuna kommun",
+   "org_number": "2120000357",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 7,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Eskilstuna kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Finansinspektionen",
+   "org_number": "2021004235",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 7,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Finansinspektionen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Hässleholms kommun",
+   "org_number": "2120000985",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.hassleholm.se/",
+   "ad_count": 7,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Hässleholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kristianstads kommun",
+   "org_number": "2120000951",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 7,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Kristianstads kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Uppsala län",
+   "org_number": "2021002254",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 7,
+   "latest_ad": "2023-11-22",
+   "name_variants": [
+    "Länsstyrelsen i Uppsala län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten För Delaktighet",
+   "org_number": "2021005588",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.mfd.se/",
+   "ad_count": 7,
+   "latest_ad": "2023-12-20",
+   "name_variants": [
+    "Myndigheten För Delaktighet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten För Ungdoms-och Civilsamhällesfrågor",
+   "org_number": "2021001173",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 7,
+   "latest_ad": "2026-02-05",
+   "name_variants": [
+    "Myndigheten För Ungdoms-och Civilsamhällesfrågor"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION VÄSTERBOTTEN",
+   "org_number": "2321000222",
+   "org_type": "REGION",
+   "website": null,
+   "ad_count": 7,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "REGION VÄSTERBOTTEN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION ÖSTERGÖTLAND",
+   "org_number": "2321000040",
+   "org_type": "REGION",
+   "website": "https://www.regionostergotland.se/ro/jobb-och-utbildning/lediga-jobb",
+   "ad_count": 7,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "REGION ÖSTERGÖTLAND"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tandvårds-och Läkemedelsförmånsverket, Tlv",
+   "org_number": "2021005364",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.tlv.se/",
+   "ad_count": 7,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Tandvårds-och Läkemedelsförmånsverket, Tlv"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Umeå kommun",
+   "org_number": "2120002627",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.umea.se/ledigajobb",
+   "ad_count": 7,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Umeå kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Åre kommun",
+   "org_number": "2120002494",
+   "org_type": "MUNICIPALITY",
+   "website": "http://are.varbi.com",
+   "ad_count": 7,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Åre kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Arbetsförmedlingen",
+   "org_number": "2021002114",
+   "org_type": "STATE_AGENCY",
+   "website": "https://arbetsformedlingen.se/om-oss/jobba-hos-oss",
+   "ad_count": 6,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Arbetsförmedlingen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ekobrottsmyndigheten",
+   "org_number": "2021004979",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 6,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Ekobrottsmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Högskolan i Borås",
+   "org_number": "2021003138",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.hb.se/",
+   "ad_count": 6,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Högskolan i Borås"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Karlskrona kommun",
+   "org_number": "2120000829",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 6,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "KARLSKRONA KOMMUN",
+    "Karlskrona kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lantmäteriet",
+   "org_number": "2021004888",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 6,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Lantmäteriet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Malmö Universitet",
+   "org_number": "2021004920",
+   "org_type": "UNIVERSITY",
+   "website": "https://mau.se/om-oss/jobba-hos-oss/lediga-jobb/",
+   "ad_count": 6,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Malmö Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Marks kommun",
+   "org_number": "2120001504",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 6,
+   "latest_ad": "2026-10-26",
+   "name_variants": [
+    "MARKS KOMMUN",
+    "Marks kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Motala kommun",
+   "org_number": "2120002817",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 6,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "MOTALA KOMMUN",
+    "Motala kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Nynäshamns kommun",
+   "org_number": "2120000233",
+   "org_type": "MUNICIPALITY",
+   "website": "https://nynashamn.se/",
+   "ad_count": 6,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "NYNÄSHAMNS KOMMUN",
+    "Nynäshamns kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Pensionsmyndigheten",
+   "org_number": "2021006255",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.pensionsmyndigheten.se/om-pensionsmyndigheten/jobba-hos-oss/lediga-jobb",
+   "ad_count": 6,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Pensionsmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Post- och Telestyrelsen",
+   "org_number": "2021004359",
+   "org_type": "STATE_AGENCY",
+   "website": "https://pts.se/",
+   "ad_count": 6,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Post- och Telestyrelsen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION GÄVLEBORG",
+   "org_number": "2321000198",
+   "org_type": "REGION",
+   "website": null,
+   "ad_count": 6,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "REGION GÄVLEBORG"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tierps kommun",
+   "org_number": "2120000266",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 6,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Tierps kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Totalförsvarets Forskningsinstitut, Foi",
+   "org_number": "2021005182",
+   "org_type": "STATE_AGENCY",
+   "website": "www.foi.se",
+   "ad_count": 6,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Totalförsvarets Forskningsinstitut, Foi"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Värmdö kommun",
+   "org_number": "2120000035",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.varmdo.se/",
+   "ad_count": 6,
+   "latest_ad": "2026-10-29",
+   "name_variants": [
+    "VÄRMDÖ KOMMUN",
+    "Värmdö kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "BODENS KOMMUN",
+   "org_number": "2120002767",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 5,
+   "latest_ad": "2026-10-16",
+   "name_variants": [
+    "BODENS KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Fortifikationsverket",
+   "org_number": "2021004607",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.fortifikationsverket.se",
+   "ad_count": 5,
+   "latest_ad": "2026-08-24",
+   "name_variants": [
+    "Fortifikationsverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kiruna kommun",
+   "org_number": "2120002783",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 5,
+   "latest_ad": "2023-09-01",
+   "name_variants": [
+    "Kiruna kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lidingö kommun",
+   "org_number": "2120000191",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 5,
+   "latest_ad": "2026-08-19",
+   "name_variants": [
+    "LIDINGÖ KOMMUN",
+    "Lidingö kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lycksele kommun",
+   "org_number": "2120002635",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.lycksele.se/",
+   "ad_count": 5,
+   "latest_ad": "2026-10-14",
+   "name_variants": [
+    "Lycksele kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Dalarnas län",
+   "org_number": "2021002429",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 5,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Länsstyrelsen i Dalarnas län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Västerbottens län",
+   "org_number": "2021002460",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 5,
+   "latest_ad": "2026-10-16",
+   "name_variants": [
+    "Länsstyrelsen i Västerbottens län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Munkedals kommun",
+   "org_number": "2120001330",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.munkedal.se",
+   "ad_count": 5,
+   "latest_ad": "2026-07-13",
+   "name_variants": [
+    "MUNKEDALS KOMMUN",
+    "Munkedals kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Skogsstyrelsen",
+   "org_number": "2021005612",
+   "org_type": "STATE_AGENCY",
+   "website": "https://skogsstyrelsen.se/om-oss/var-verksamhet/jobba-hos-oss/lediga-jobb/",
+   "ad_count": 5,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "Skogsstyrelsen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Kulturråd",
+   "org_number": "2021001280",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.kulturradet.se/om-oss/jobba-hos-oss/",
+   "ad_count": 5,
+   "latest_ad": "2023-12-09",
+   "name_variants": [
+    "Statens Kulturråd"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Södertälje kommun",
+   "org_number": "2120000159",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 5,
+   "latest_ad": "2025-04-11",
+   "name_variants": [
+    "Södertälje kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Södertörns Högskola",
+   "org_number": "2021004896",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.sh.se/",
+   "ad_count": 5,
+   "latest_ad": "2023-12-28",
+   "name_variants": [
+    "Södertörns Högskola"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Trollhättans kommun",
+   "org_number": "2120001546",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 5,
+   "latest_ad": "2024-11-27",
+   "name_variants": [
+    "Trollhättans kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Östersunds kommun",
+   "org_number": "2120002528",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.ostersund.se/",
+   "ad_count": 5,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Östersunds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Bollnäs kommun",
+   "org_number": "2120002361",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.bollnas.se",
+   "ad_count": 4,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Bollnäs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Enköpings kommun",
+   "org_number": "2120000282",
+   "org_type": "MUNICIPALITY",
+   "website": "http://enkoping.varbi.com",
+   "ad_count": 4,
+   "latest_ad": "2026-10-22",
+   "name_variants": [
+    "Enköpings kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Gislaveds kommun",
+   "org_number": "2120000514",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.gislaved.se",
+   "ad_count": 4,
+   "latest_ad": "2026-10-15",
+   "name_variants": [
+    "Gislaveds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Gällivare kommun",
+   "org_number": "2120002726",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Gällivare kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Högskolan i Skövde",
+   "org_number": "2021003146",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.his.se",
+   "ad_count": 4,
+   "latest_ad": "2023-10-20",
+   "name_variants": [
+    "Högskolan i Skövde"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Hörby kommun",
+   "org_number": "2120001108",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.horby.se/naringsliv-och-arbete/jobba-i-horby-kommun/",
+   "ad_count": 4,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Hörby kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Järfälla kommun",
+   "org_number": "2120000043",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Järfälla kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Konsumentverket",
+   "org_number": "2021002064",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.konsumentverket.se/",
+   "ad_count": 4,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Konsumentverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kungliga Biblioteket",
+   "org_number": "2021001710",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.kb.se/",
+   "ad_count": 4,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Kungliga Biblioteket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Köpings kommun",
+   "org_number": "2120002114",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Köpings kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Landskrona kommun",
+   "org_number": "2120001140",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Landskrona kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ljusdals kommun",
+   "org_number": "2120002320",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.ljusdal.se/",
+   "ad_count": 4,
+   "latest_ad": "2026-10-30",
+   "name_variants": [
+    "Ljusdals kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Hallands län",
+   "org_number": "2021002353",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 4,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Länsstyrelsen i Hallands län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Kalmar län",
+   "org_number": "2021002304",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2023-08-10",
+   "name_variants": [
+    "Länsstyrelsen i Kalmar län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten För Digital Förvaltning",
+   "org_number": "2021006883",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.digg.se",
+   "ad_count": 4,
+   "latest_ad": "2026-04-01",
+   "name_variants": [
+    "Myndigheten För Digital Förvaltning"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten För Yrkeshögskolan",
+   "org_number": "2021006230",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.myh.se",
+   "ad_count": 4,
+   "latest_ad": "2026-10-14",
+   "name_variants": [
+    "Myndigheten För Yrkeshögskolan"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "MÄLARDALENS UNIVERSITET",
+   "org_number": "2021002916",
+   "org_type": "UNIVERSITY",
+   "website": "https://mdu.se",
+   "ad_count": 4,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "MÄLARDALENS UNIVERSITET"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Mölndals kommun",
+   "org_number": "2120001363",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-10-21",
+   "name_variants": [
+    "Mölndals kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Norrtälje kommun",
+   "org_number": "2120000217",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Norrtälje kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Nyköpings kommun",
+   "org_number": "2120002940",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.nykoping.se/rekrytering/",
+   "ad_count": 4,
+   "latest_ad": "2026-10-21",
+   "name_variants": [
+    "Nyköpings kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Piteå kommun",
+   "org_number": "2120002759",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.pitea.se",
+   "ad_count": 4,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "PITEÅ KOMMUN",
+    "Piteå kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION BLEKINGE",
+   "org_number": "2321000081",
+   "org_type": "REGION",
+   "website": "https://regionblekinge.se/",
+   "ad_count": 4,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "REGION BLEKINGE"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sala kommun",
+   "org_number": "2120002098",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.sala.se/",
+   "ad_count": 4,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Sala kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Fastighetsverk",
+   "org_number": "2021004474",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.sfv.se/",
+   "ad_count": 4,
+   "latest_ad": "2026-10-30",
+   "name_variants": [
+    "Statens Fastighetsverk"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statskontoret",
+   "org_number": "2021005026",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.esv.se",
+   "ad_count": 4,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Ekonomistyrningsverket",
+    "Statskontoret"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Trelleborgs kommun",
+   "org_number": "2120001199",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.trelleborg.se/sv/naringsliv-arbete/jobba-hos-oss/lediga-jobb/",
+   "ad_count": 4,
+   "latest_ad": "2026-10-26",
+   "name_variants": [
+    "Trelleborgs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Verket För Innovationssystem",
+   "org_number": "2021005216",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Verket För Innovationssystem"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "VÄXJÖ KOMMUN",
+   "org_number": "2120000662",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "VÄXJÖ KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Värnamo kommun",
+   "org_number": "2120000555",
+   "org_type": "MUNICIPALITY",
+   "website": "www.varnamo.se",
+   "ad_count": 4,
+   "latest_ad": "2026-10-19",
+   "name_variants": [
+    "Värnamo kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ängelholms kommun",
+   "org_number": "2120000977",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 4,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Ängelholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Österåkers kommun",
+   "org_number": "2120002890",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.osteraker.se/",
+   "ad_count": 4,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Österåkers kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ale kommun",
+   "org_number": "2120001439",
+   "org_type": "MUNICIPALITY",
+   "website": "https://ale.se/",
+   "ad_count": 3,
+   "latest_ad": "2024-04-12",
+   "name_variants": [
+    "Ale kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Alingsås kommun",
+   "org_number": "2120001553",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.alingsas.se/naringsliv-och-arbete/jobb/",
+   "ad_count": 3,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Alingsås kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Arvika kommun",
+   "org_number": "2120001892",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2023-12-08",
+   "name_variants": [
+    "Arvika kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Avesta kommun",
+   "org_number": "2120002262",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Avesta kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Bräcke kommun",
+   "org_number": "2120002460",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.bräckenästa.se",
+   "ad_count": 3,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Bräcke kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Diskrimineringsombudsmannen",
+   "org_number": "2021006073",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.do.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Diskrimineringsombudsmannen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ekerö kommun",
+   "org_number": "2120000050",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.ekero.se",
+   "ad_count": 3,
+   "latest_ad": "2026-10-29",
+   "name_variants": [
+    "Ekerö kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Eksjö kommun",
+   "org_number": "2120000589",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2024-12-17",
+   "name_variants": [
+    "Eksjö kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Eslövs kommun",
+   "org_number": "2120001173",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Eslövs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "FORSKNINGSRÅDET F MILJÖ, AREELLA NÄRINGAR OCH SA",
+   "org_number": "2021005232",
+   "org_type": "STATE_AGENCY",
+   "website": "https://formas.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "FORSKNINGSRÅDET F MILJÖ, AREELLA NÄRINGAR OCH SA"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Falu kommun",
+   "org_number": "2120002221",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.falun.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Falu kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Grästorps kommun",
+   "org_number": "2120001595",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.grastorp.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Grästorps kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Höganäs kommun",
+   "org_number": "2120001165",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.hoganas.se/varforhoganas",
+   "ad_count": 3,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Höganäs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Högsby kommun",
+   "org_number": "2120000688",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2023-08-31",
+   "name_variants": [
+    "Högsby kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Högskolan i Halmstad",
+   "org_number": "2021003203",
+   "org_type": "UNIVERSITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2023-12-27",
+   "name_variants": [
+    "Högskolan i Halmstad"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Höörs kommun",
+   "org_number": "2120001116",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-10-22",
+   "name_variants": [
+    "Höörs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kammarkollegiet",
+   "org_number": "2021000829",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.kammarkollegiet.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Kammarkollegiet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Karlskoga kommun",
+   "org_number": "2120001991",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Karlskoga kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Karlstads Universitet",
+   "org_number": "2021003120",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.kau.se/om-universitetet/lediga-anstallningar",
+   "ad_count": 3,
+   "latest_ad": "2026-04-24",
+   "name_variants": [
+    "Karlstads Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kristinehamns kommun",
+   "org_number": "2120001868",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.kristinehamn.se/naringsliv-och-arbete/jobba-i-kristinehamns-kommun/",
+   "ad_count": 3,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Kristinehamns kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kustbevakningen",
+   "org_number": "2021003997",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2023-10-16",
+   "name_variants": [
+    "Kustbevakningen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lindesbergs kommun",
+   "org_number": "2120002015",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Lindesbergs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Kronobergs län",
+   "org_number": "2021002296",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-10-21",
+   "name_variants": [
+    "Länsstyrelsen i Kronobergs län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Stockholms län",
+   "org_number": "2021002247",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-10-30",
+   "name_variants": [
+    "Länsstyrelsen i Stockholms län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Västernorrlands län",
+   "org_number": "2021002445",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2023-07-06",
+   "name_variants": [
+    "Länsstyrelsen i Västernorrlands län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "MYNDIGHETEN FÖR TOTALFÖRSVARSANALYS",
+   "org_number": "2021007055",
+   "org_type": "STATE_AGENCY",
+   "website": "www.mtfa.se",
+   "ad_count": 3,
+   "latest_ad": "2023-12-19",
+   "name_variants": [
+    "MYNDIGHETEN FÖR TOTALFÖRSVARSANALYS"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Malung-Sälens kommun",
+   "org_number": "2120002148",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.youtube.com/watch?si=tjtFJyx27TaFndW1&v=lqD_yyd2CIU&feature=youtu.be",
+   "ad_count": 3,
+   "latest_ad": "2026-09-28",
+   "name_variants": [
+    "Malung-Sälens kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Melleruds kommun",
+   "org_number": "2120001488",
+   "org_type": "MUNICIPALITY",
+   "website": "https://mellerud.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-10-26",
+   "name_variants": [
+    "Melleruds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten För Vård- och Omsorgsanalys",
+   "org_number": "2021006412",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.vardanalys.se",
+   "ad_count": 3,
+   "latest_ad": "2022-05-10",
+   "name_variants": [
+    "Myndigheten För Vård- och Omsorgsanalys"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Nationalmuseum",
+   "org_number": "2021001108",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2024-11-12",
+   "name_variants": [
+    "Nationalmuseum"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Naturhistoriska Riksmuseet",
+   "org_number": "2021001124",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.nrm.se/",
+   "ad_count": 3,
+   "latest_ad": "2024-10-03",
+   "name_variants": [
+    "Naturhistoriska Riksmuseet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Nordanstigs kommun",
+   "org_number": "2120002312",
+   "org_type": "MUNICIPALITY",
+   "website": "https://nordanstig.se/startsida/sidor/naringsliv-och-arbete/lediga-jobb.html",
+   "ad_count": 3,
+   "latest_ad": "2026-07-27",
+   "name_variants": [
+    "NORDANSTIGS KOMMUN",
+    "Nordanstigs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Nykvarns kommun",
+   "org_number": "2120002999",
+   "org_type": "MUNICIPALITY",
+   "website": "www.nykvarn.se",
+   "ad_count": 3,
+   "latest_ad": "2023-03-22",
+   "name_variants": [
+    "Nykvarns kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Oxelösunds kommun",
+   "org_number": "2120000324",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.oxelosund.se",
+   "ad_count": 3,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Oxelösunds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION VÄRMLAND",
+   "org_number": "2321000156",
+   "org_type": "REGION",
+   "website": "https://www.regionvarmland.se/regionvarmland/jobb-utbildning--forskning/jobba-med-oss/lediga-jobb",
+   "ad_count": 3,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "REGION VÄRMLAND"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION VÄSTMANLAND",
+   "org_number": "2321000172",
+   "org_type": "REGION",
+   "website": "https://regionvastmanland.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "REGION VÄSTMANLAND"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sandvikens kommun",
+   "org_number": "2120002346",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "SANDVIKENS KOMMUN",
+    "Sandvikens kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sida",
+   "org_number": "2021004789",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Sida"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Skurups kommun",
+   "org_number": "2120001082",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Skurups kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sollefteå kommun",
+   "org_number": "2120002437",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Sollefteå kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Energimyndighet",
+   "org_number": "2021005000",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.energimyndigheten.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Statens Energimyndighet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Veterinärmedicinska Anstalt",
+   "org_number": "2021001868",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.sva.se",
+   "ad_count": 3,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Statens Veterinärmedicinska Anstalt"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sunne kommun",
+   "org_number": "2120001843",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2025-07-09",
+   "name_variants": [
+    "Sunne kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Trafikanalys",
+   "org_number": "2021006305",
+   "org_type": "STATE_AGENCY",
+   "website": "www.trafa.se",
+   "ad_count": 3,
+   "latest_ad": "2022-10-25",
+   "name_variants": [
+    "Trafikanalys"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tranås kommun",
+   "org_number": "2120000597",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.tranas.se/",
+   "ad_count": 3,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Tranås kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "UTBETALNINGSMYNDIGHETEN",
+   "org_number": "2021007071",
+   "org_type": "STATE_AGENCY",
+   "website": "https://ubm.se/jobba-hos-oss",
+   "ad_count": 3,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "UTBETALNINGSMYNDIGHETEN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Uddevalla kommun",
+   "org_number": "2120001397",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.uddevalla.se/jobb",
+   "ad_count": 3,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Uddevalla kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Upplands-Bro kommun",
+   "org_number": "2120000100",
+   "org_type": "MUNICIPALITY",
+   "website": "https://upplands-bro.varbi.com",
+   "ad_count": 3,
+   "latest_ad": "2026-10-30",
+   "name_variants": [
+    "Upplands-Bro kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vingåkers kommun",
+   "org_number": "2120000308",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 3,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "VINGÅKERS KOMMUN",
+    "Vingåkers kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Örebro Universitet",
+   "org_number": "2021002924",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.oru.se/",
+   "ad_count": 3,
+   "latest_ad": "2025-03-28",
+   "name_variants": [
+    "Örebro Universitet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Östhammars kommun",
+   "org_number": "2120000290",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.osthammar.se/jobb",
+   "ad_count": 3,
+   "latest_ad": "2026-06-10",
+   "name_variants": [
+    "ÖSTHAMMARS KOMMUN",
+    "Östhammars kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Alvesta kommun",
+   "org_number": "2120000639",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-09-27",
+   "name_variants": [
+    "Alvesta kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Arbetsmiljöverket (Av)",
+   "org_number": "2021002148",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.av.se",
+   "ad_count": 2,
+   "latest_ad": "2023-12-21",
+   "name_variants": [
+    "Arbetsmiljöverket (Av)"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Bjuvs kommun",
+   "org_number": "2120001041",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-09-10",
+   "name_variants": [
+    "Bjuvs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Blekinge Tekniska Högskola",
+   "org_number": "2021004011",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.bth.se",
+   "ad_count": 2,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Blekinge Tekniska Högskola"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Bollebygds kommun",
+   "org_number": "2120002973",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Bollebygds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Borlänge kommun",
+   "org_number": "2120002239",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Borlänge kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Botkyrka kommun",
+   "org_number": "2120002882",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-10-03",
+   "name_variants": [
+    "Botkyrka kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Centrala Studiestödsnämnden",
+   "org_number": "2021001819",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-05-05",
+   "name_variants": [
+    "Centrala Studiestödsnämnden"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Emmaboda kommun",
+   "org_number": "2120000738",
+   "org_type": "MUNICIPALITY",
+   "website": "http://jobb.emmaboda.se",
+   "ad_count": 2,
+   "latest_ad": "2023-05-09",
+   "name_variants": [
+    "Emmaboda kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Fagersta kommun",
+   "org_number": "2120002106",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-08-22",
+   "name_variants": [
+    "Fagersta kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Falkenbergs kommun",
+   "org_number": "2120001231",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2022-09-30",
+   "name_variants": [
+    "Falkenbergs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Finspångs kommun",
+   "org_number": "2120000423",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.finspang.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Finspångs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Folke Bernadotteakademin",
+   "org_number": "2021005380",
+   "org_type": "STATE_AGENCY",
+   "website": "https://fba.se/",
+   "ad_count": 2,
+   "latest_ad": "2023-11-07",
+   "name_variants": [
+    "Folke Bernadotteakademin"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Försvarshögskolan",
+   "org_number": "2021004730",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.fhs.se/om-forsvarshogskolan/jobba-hos-oss/lediga-jobb.html",
+   "ad_count": 2,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Försvarshögskolan"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Gnesta kommun",
+   "org_number": "2120002965",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Gnesta kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Gnosjö kommun",
+   "org_number": "2120000506",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-09-22",
+   "name_variants": [
+    "Gnosjö kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Grums kommun",
+   "org_number": "2120001827",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.grums.se/naringslivjobb/arbete/saardetattjobbahososs.4957.html",
+   "ad_count": 2,
+   "latest_ad": "2023-11-07",
+   "name_variants": [
+    "Grums kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Habo kommun",
+   "org_number": "2120001611",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-16",
+   "name_variants": [
+    "Habo kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Hallstahammars kommun",
+   "org_number": "2120002064",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-09-07",
+   "name_variants": [
+    "Hallstahammars kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Haninge kommun",
+   "org_number": "2120000084",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.haninge.se/kommun-och-politik/jobba-hos-oss/lediga-jobb-i-kommunen/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-19",
+   "name_variants": [
+    "Haninge kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Hedemora kommun",
+   "org_number": "2120002254",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.hedemora.se",
+   "ad_count": 2,
+   "latest_ad": "2026-10-15",
+   "name_variants": [
+    "Hedemora kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Hjo kommun",
+   "org_number": "2120001728",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-03-10",
+   "name_variants": [
+    "Hjo kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Hudiksvalls kommun",
+   "org_number": "2120002379",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-03-20",
+   "name_variants": [
+    "Hudiksvalls kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Hylte kommun",
+   "org_number": "2120001207",
+   "org_type": "MUNICIPALITY",
+   "website": "www.hylte.se",
+   "ad_count": 2,
+   "latest_ad": "2026-09-16",
+   "name_variants": [
+    "Hylte kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Integritetsskyddsmyndigheten",
+   "org_number": "2021000050",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.imy.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-19",
+   "name_variants": [
+    "Integritetsskyddsmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Jokkmokks kommun",
+   "org_number": "2120002676",
+   "org_type": "MUNICIPALITY",
+   "website": "https://jokkmokk.se/kommun-samhalle/jobba-hos-oss/",
+   "ad_count": 2,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Jokkmokks kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Jämställdhetsmyndigheten",
+   "org_number": "2021006693",
+   "org_type": "STATE_AGENCY",
+   "website": "https://jamstalldhetsmyndigheten.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-19",
+   "name_variants": [
+    "Jämställdhetsmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kalmar kommun",
+   "org_number": "2120000746",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-02-06",
+   "name_variants": [
+    "Kalmar kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Karlshamns kommun",
+   "org_number": "2120000845",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.karlshamn.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-05-05",
+   "name_variants": [
+    "Karlshamns kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kinda kommun",
+   "org_number": "2120000399",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Kinda kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Knivsta kommun",
+   "org_number": "2120003013",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Knivsta kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kommerskollegium",
+   "org_number": "2021002007",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Kommerskollegium"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kumla kommun",
+   "org_number": "2120001975",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-04",
+   "name_variants": [
+    "Kumla kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Laholms kommun",
+   "org_number": "2120001223",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.laholm.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Laholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lidköpings kommun",
+   "org_number": "2120001694",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-04-14",
+   "name_variants": [
+    "Lidköpings kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Livsmedelsverket",
+   "org_number": "2021001850",
+   "org_type": "STATE_AGENCY",
+   "website": "www.slv.se",
+   "ad_count": 2,
+   "latest_ad": "2026-10-20",
+   "name_variants": [
+    "Livsmedelsverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ljusnarsbergs kommun",
+   "org_number": "2120001959",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.ljusnarsberg.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Ljusnarsbergs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Luftfartsverket",
+   "org_number": "2021000795",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lfv.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Luftfartsverket"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lysekils kommun",
+   "org_number": "2120001389",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2025-06-05",
+   "name_variants": [
+    "Lysekils kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Gävleborgs län",
+   "org_number": "2021002437",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.lansstyrelsen.se/gavleborg/Sv/om-lansstyrelsen/jobba-hos-oss/Pages/default.aspx",
+   "ad_count": 2,
+   "latest_ad": "2026-04-02",
+   "name_variants": [
+    "Länsstyrelsen i Gävleborgs län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Jämtlands län",
+   "org_number": "2021002452",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-16",
+   "name_variants": [
+    "Länsstyrelsen i Jämtlands län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Jönköpings län",
+   "org_number": "2021002288",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2024-02-01",
+   "name_variants": [
+    "Länsstyrelsen i Jönköpings län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Norrbottens län",
+   "org_number": "2021002478",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Länsstyrelsen i Norrbottens län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Skåne län",
+   "org_number": "2021002346",
+   "org_type": "STATE_AGENCY",
+   "website": "http://bit.ly/2tstInB",
+   "ad_count": 2,
+   "latest_ad": "2024-11-14",
+   "name_variants": [
+    "Länsstyrelsen i Skåne län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Värmlands län",
+   "org_number": "2021002395",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-05-15",
+   "name_variants": [
+    "Länsstyrelsen i Värmlands län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Östergötlands län",
+   "org_number": "2021002270",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.lansstyrelsen.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Länsstyrelsen i Östergötlands län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "MARIESTADS KOMMUN",
+   "org_number": "2120001686",
+   "org_type": "MUNICIPALITY",
+   "website": "https://mariestad.se/mariestad-vaxer",
+   "ad_count": 2,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "MARIESTADS KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Mittuniversitetet",
+   "org_number": "2021004524",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.miun.se",
+   "ad_count": 2,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Mittuniversitetet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Mjölby kommun",
+   "org_number": "2120000480",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Mjölby kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Mörbylånga kommun",
+   "org_number": "2120000704",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-16",
+   "name_variants": [
+    "Mörbylånga kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Nora kommun",
+   "org_number": "2120002007",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-26",
+   "name_variants": [
+    "Nora kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Orust kommun",
+   "org_number": "2120001314",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.orust.se",
+   "ad_count": 2,
+   "latest_ad": "2023-04-04",
+   "name_variants": [
+    "Orust kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Osby kommun",
+   "org_number": "2120000902",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-07-03",
+   "name_variants": [
+    "Osby kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Pajala kommun",
+   "org_number": "2120002718",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2025-05-19",
+   "name_variants": [
+    "Pajala kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Perstorps kommun",
+   "org_number": "2120000910",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-10-06",
+   "name_variants": [
+    "Perstorps kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION JÄMTLAND HÄRJEDALEN",
+   "org_number": "2321000214",
+   "org_type": "REGION",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2025-01-15",
+   "name_variants": [
+    "REGION JÄMTLAND HÄRJEDALEN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "REGION VÄSTERNORRLAND",
+   "org_number": "2321000206",
+   "org_type": "REGION",
+   "website": "https://www.rvn.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-29",
+   "name_variants": [
+    "REGION VÄSTERNORRLAND"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Riksgäldskontoret",
+   "org_number": "2021002635",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.riksgalden.se/",
+   "ad_count": 2,
+   "latest_ad": "2023-03-20",
+   "name_variants": [
+    "Riksgäldskontoret"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ronneby kommun",
+   "org_number": "2120000837",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2025-01-10",
+   "name_variants": [
+    "Ronneby kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Rättviks kommun",
+   "org_number": "2120002171",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-06-30",
+   "name_variants": [
+    "Rättviks kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sjöbo kommun",
+   "org_number": "2120001090",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-16",
+   "name_variants": [
+    "Sjöbo kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Skövde kommun",
+   "org_number": "2120001710",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Skövde kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Solna kommun",
+   "org_number": "2120000183",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.solna.se",
+   "ad_count": 2,
+   "latest_ad": "2021-11-18",
+   "name_variants": [
+    "Solna kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Staffanstorps kommun",
+   "org_number": "2120001017",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-12-22",
+   "name_variants": [
+    "Staffanstorps kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Jordbruksverk",
+   "org_number": "2021004151",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "Statens Jordbruksverk"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Museer För Världskultur",
+   "org_number": "2021005075",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2024-04-25",
+   "name_variants": [
+    "Statens Museer För Världskultur"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Tjänstepensionsverk",
+   "org_number": "2021000928",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.spv.se/om-spv/jobba-pa-spv/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "Statens Tjänstepensionsverk"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens servicecenter",
+   "org_number": "2021006453",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.statenssc.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-06-08",
+   "name_variants": [
+    "Statens servicecenter"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Strängnäs kommun",
+   "org_number": "2120000365",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.strangnas.se/arbete-och-foretagande/arbete-och-karriar/lediga-jobb#/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-29",
+   "name_variants": [
+    "Strängnäs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sundbybergs kommun",
+   "org_number": "2120000175",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.sundbyberg.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-20",
+   "name_variants": [
+    "Sundbybergs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Svenljunga kommun",
+   "org_number": "2120001512",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Svenljunga kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sveriges Riksbank",
+   "org_number": "2021002684",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.riksbank.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-11-05",
+   "name_variants": [
+    "Sveriges Riksbank"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sölvesborgs kommun",
+   "org_number": "2120000852",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2025-01-10",
+   "name_variants": [
+    "Sölvesborgs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tidaholms kommun",
+   "org_number": "2120001736",
+   "org_type": "MUNICIPALITY",
+   "website": "https://tidaholm.se",
+   "ad_count": 2,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Tidaholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tjörns kommun",
+   "org_number": "2120001306",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.randstad.se/jobb/upphandlare_tjorn-kommun_201441847/",
+   "ad_count": 2,
+   "latest_ad": "2023-07-13",
+   "name_variants": [
+    "Tjörns kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Torsås kommun",
+   "org_number": "2120000696",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-10-17",
+   "name_variants": [
+    "Torsås kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ulricehamns kommun",
+   "org_number": "2120001579",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "ULRICEHAMNS KOMMUN",
+    "Ulricehamns kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Universitetskanslersämbetet",
+   "org_number": "2021006495",
+   "org_type": "UNIVERSITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-20",
+   "name_variants": [
+    "Universitetskanslersämbetet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Upplands Väsby kommun",
+   "org_number": "2120000019",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.upplandsvasby.se/ledigajobb",
+   "ad_count": 2,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "Upplands Väsby kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Uppvidinge kommun",
+   "org_number": "2120000605",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-03-16",
+   "name_variants": [
+    "Uppvidinge kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Varbergs kommun",
+   "org_number": "2120001249",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-10-27",
+   "name_variants": [
+    "Varbergs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vellinge kommun",
+   "org_number": "2120001033",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-05-05",
+   "name_variants": [
+    "VELLINGE KOMMUN",
+    "Vellinge kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vänersborgs kommun",
+   "org_number": "2120001538",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.vanersborg.se",
+   "ad_count": 2,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Vänersborgs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vårgårda kommun",
+   "org_number": "2120001454",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2023-12-19",
+   "name_variants": [
+    "Vårgårda kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Åsele kommun",
+   "org_number": "2120002791",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.asele.se/lediga-jobb/",
+   "ad_count": 2,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Åsele kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Åstorps kommun",
+   "org_number": "2120000936",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 2,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Åstorps kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "ÖVERTORNEÅ KOMMUN",
+   "org_number": "2120002700",
+   "org_type": "MUNICIPALITY",
+   "website": "https://overtornea.se/",
+   "ad_count": 2,
+   "latest_ad": "2026-07-07",
+   "name_variants": [
+    "ÖVERTORNEÅ KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Arboga kommun",
+   "org_number": "2120002122",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-03-30",
+   "name_variants": [
+    "Arboga kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Arvidsjaurs kommun",
+   "org_number": "2120002650",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Arvidsjaurs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Askersunds kommun",
+   "org_number": "2120001983",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Askersunds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Bengtsfors kommun",
+   "org_number": "2120001470",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-07-04",
+   "name_variants": [
+    "Bengtsfors kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Bjurholms kommun",
+   "org_number": "2120002833",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-03-27",
+   "name_variants": [
+    "Bjurholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Boxholms kommun",
+   "org_number": "2120000407",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2025-06-17",
+   "name_variants": [
+    "Boxholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Bromölla kommun",
+   "org_number": "2120000894",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.bromolla.se/",
+   "ad_count": 1,
+   "latest_ad": "2023-03-30",
+   "name_variants": [
+    "Bromölla kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Burlövs kommun",
+   "org_number": "2120001025",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-10-26",
+   "name_variants": [
+    "Burlövs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Danderyds kommun",
+   "org_number": "2120000126",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-29",
+   "name_variants": [
+    "Danderyds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Essunga kommun",
+   "org_number": "2120002916",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-08-16",
+   "name_variants": [
+    "Essunga kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "FALKÖPINGS KOMMUN",
+   "org_number": "2120001744",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.falkoping.se/jobba-i-falkopings-kommun/lediga-jobb",
+   "ad_count": 1,
+   "latest_ad": "2026-06-11",
+   "name_variants": [
+    "FALKÖPINGS KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Fastighetsmäklarinspektionen",
+   "org_number": "2021004870",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-09-28",
+   "name_variants": [
+    "Fastighetsmäklarinspektionen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Forshaga kommun",
+   "org_number": "2120001819",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-09-18",
+   "name_variants": [
+    "Forshaga kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Forum För Levande Historia",
+   "org_number": "2021005356",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.levandehistoria.se/",
+   "ad_count": 1,
+   "latest_ad": "2023-12-19",
+   "name_variants": [
+    "Forum För Levande Historia"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Gymnastik- och Idrottshögskolan (Gih)",
+   "org_number": "2021004334",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.gih.se",
+   "ad_count": 1,
+   "latest_ad": "2022-01-31",
+   "name_variants": [
+    "Gymnastik- och Idrottshögskolan (Gih)"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Götene kommun",
+   "org_number": "2120001652",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2025-01-20",
+   "name_variants": [
+    "Götene kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Haparanda kommun",
+   "org_number": "2120002775",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-10-23",
+   "name_variants": [
+    "Haparanda kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Herrljunga kommun",
+   "org_number": "2120001520",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-29",
+   "name_variants": [
+    "Herrljunga kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Härnösands kommun",
+   "org_number": "2120002403",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.harnosand.se",
+   "ad_count": 1,
+   "latest_ad": "2025-01-23",
+   "name_variants": [
+    "Härnösands kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Härryda kommun",
+   "org_number": "2120001264",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-11-03",
+   "name_variants": [
+    "Härryda kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Högskolan Dalarna",
+   "org_number": "2021002908",
+   "org_type": "UNIVERSITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-12-14",
+   "name_variants": [
+    "Högskolan Dalarna"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Högskolan Väst",
+   "org_number": "2021004052",
+   "org_type": "UNIVERSITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2022-03-14",
+   "name_variants": [
+    "Högskolan Väst"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Högskolan i Gävle",
+   "org_number": "2021002890",
+   "org_type": "UNIVERSITY",
+   "website": "http://www.hig.se",
+   "ad_count": 1,
+   "latest_ad": "2022-06-10",
+   "name_variants": [
+    "Högskolan i Gävle"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "INST FÖR MÄNSKLIGA RÄTTIGHETER",
+   "org_number": "2021007022",
+   "org_type": "STATE_AGENCY",
+   "website": "https://mrinstitutet.se/jobba-hos-oss/",
+   "ad_count": 1,
+   "latest_ad": "2023-02-24",
+   "name_variants": [
+    "INST FÖR MÄNSKLIGA RÄTTIGHETER"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Inspektionen För Socialförsäkringen",
+   "org_number": "2021006248",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.isf.se",
+   "ad_count": 1,
+   "latest_ad": "2021-09-27",
+   "name_variants": [
+    "Inspektionen För Socialförsäkringen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "KRAMFORS KOMMUN",
+   "org_number": "2120002429",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-06-22",
+   "name_variants": [
+    "KRAMFORS KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Karlsborgs kommun",
+   "org_number": "2120001629",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-01-30",
+   "name_variants": [
+    "Karlsborgs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Katrineholms kommun",
+   "org_number": "2120000340",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Katrineholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kemikalieinspektionen",
+   "org_number": "2021003880",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2021-12-20",
+   "name_variants": [
+    "Kemikalieinspektionen"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kils kommun",
+   "org_number": "2120001751",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-03-14",
+   "name_variants": [
+    "Kils kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Klippans kommun",
+   "org_number": "2120000928",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.klippan.se",
+   "ad_count": 1,
+   "latest_ad": "2023-11-09",
+   "name_variants": [
+    "Klippans kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kungliga Konsthögskolan",
+   "org_number": "2021002957",
+   "org_type": "UNIVERSITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-05-03",
+   "name_variants": [
+    "Kungliga Konsthögskolan"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Kungliga Musikhögskolan",
+   "org_number": "2021001215",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.kmh.se/",
+   "ad_count": 1,
+   "latest_ad": "2024-03-15",
+   "name_variants": [
+    "Kungliga Musikhögskolan"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Lilla Edets kommun",
+   "org_number": "2120001496",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.lillaedet.se/",
+   "ad_count": 1,
+   "latest_ad": "2026-05-08",
+   "name_variants": [
+    "Lilla Edets kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ludvika kommun",
+   "org_number": "2120002270",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.ludvika.se",
+   "ad_count": 1,
+   "latest_ad": "2023-09-22",
+   "name_variants": [
+    "Ludvika kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Blekinge län",
+   "org_number": "2021002320",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.lansstyrelsen.se/blekinge",
+   "ad_count": 1,
+   "latest_ad": "2021-12-22",
+   "name_variants": [
+    "Länsstyrelsen i Blekinge län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Gotlands län",
+   "org_number": "2021002312",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2022-11-15",
+   "name_variants": [
+    "Länsstyrelsen i Gotlands län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Södermanlands län",
+   "org_number": "2021002262",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2024-12-20",
+   "name_variants": [
+    "Länsstyrelsen i Södermanlands län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Länsstyrelsen i Örebro län",
+   "org_number": "2021002403",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.lansstyrelsen.se/orebro/Sv/om-lansstyrelsen/jobba-hos-oss/Pages/default.aspx",
+   "ad_count": 1,
+   "latest_ad": "2021-03-09",
+   "name_variants": [
+    "Länsstyrelsen i Örebro län"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Malå kommun",
+   "org_number": "2120002866",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-12-11",
+   "name_variants": [
+    "Malå kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Markaryds kommun",
+   "org_number": "2120000654",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.markaryd.se/",
+   "ad_count": 1,
+   "latest_ad": "2023-12-07",
+   "name_variants": [
+    "Markaryds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Mora kommun",
+   "org_number": "2120002213",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.morakommun.se/ledigajobb",
+   "ad_count": 1,
+   "latest_ad": "2026-10-21",
+   "name_variants": [
+    "Mora kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Mullsjö kommun",
+   "org_number": "2120001603",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.mullsjo.se/naringsliv-och-arbete/jobba-i-mullsjo/mullsjo-kommun-som-arbetsgivare",
+   "ad_count": 1,
+   "latest_ad": "2023-01-27",
+   "name_variants": [
+    "Mullsjö kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten För Familjerätt och Föräldraskapsstö",
+   "org_number": "2021004169",
+   "org_type": "STATE_AGENCY",
+   "website": "https://mfof.se/",
+   "ad_count": 1,
+   "latest_ad": "2022-07-05",
+   "name_variants": [
+    "Myndigheten För Familjerätt och Föräldraskapsstö"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten För Stöd Till Trossamfund",
+   "org_number": "2021005141",
+   "org_type": "STATE_AGENCY",
+   "website": "www.myndighetensst.se",
+   "ad_count": 1,
+   "latest_ad": "2023-12-06",
+   "name_variants": [
+    "Myndigheten För Stöd Till Trossamfund"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten För Tillgängliga Medier",
+   "org_number": "2021003591",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.mtm.se/",
+   "ad_count": 1,
+   "latest_ad": "2023-11-03",
+   "name_variants": [
+    "Myndigheten För Tillgängliga Medier"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Myndigheten för säkerhet och integritetsskydd",
+   "org_number": "2021005703",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-28",
+   "name_variants": [
+    "Myndigheten för säkerhet och integritetsskydd"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Norsjö kommun",
+   "org_number": "2120002858",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.norsjo.se",
+   "ad_count": 1,
+   "latest_ad": "2026-10-26",
+   "name_variants": [
+    "Norsjö kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Nybro kommun",
+   "org_number": "2120000753",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2022-03-28",
+   "name_variants": [
+    "Nybro kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Partille kommun",
+   "org_number": "2120001272",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-01-13",
+   "name_variants": [
+    "Partille kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Riksarkivet",
+   "org_number": "2021001074",
+   "org_type": "STATE_AGENCY",
+   "website": "https://riksarkivet.se/",
+   "ad_count": 1,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Riksarkivet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "SALEMS KOMMUN",
+   "org_number": "2120002874",
+   "org_type": "MUNICIPALITY",
+   "website": "https://salem.se/",
+   "ad_count": 1,
+   "latest_ad": "2026-05-29",
+   "name_variants": [
+    "SALEMS KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sametinget",
+   "org_number": "2021004573",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.sametinget.se",
+   "ad_count": 1,
+   "latest_ad": "2023-11-30",
+   "name_variants": [
+    "Sametinget"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Skara kommun",
+   "org_number": "2120001702",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-11-15",
+   "name_variants": [
+    "Skara kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sotenäs kommun",
+   "org_number": "2120001322",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-12-19",
+   "name_variants": [
+    "Sotenäs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Specialpedagogiska Skolmyndigheten",
+   "org_number": "2021005745",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2022-09-29",
+   "name_variants": [
+    "Specialpedagogiska Skolmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Inspektion För Försvarsunderrättelseverk",
+   "org_number": "2021006214",
+   "org_type": "STATE_AGENCY",
+   "website": "www.siun.se",
+   "ad_count": 1,
+   "latest_ad": "2022-11-03",
+   "name_variants": [
+    "Statens Inspektion För Försvarsunderrättelseverk"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Statens Väg- och Transportforskningsinst",
+   "org_number": "2021000704",
+   "org_type": "STATE_AGENCY",
+   "website": "https://www.vti.se/",
+   "ad_count": 1,
+   "latest_ad": "2022-05-17",
+   "name_variants": [
+    "Statens Väg- och Transportforskningsinst"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Stockholms Konstnärliga Högskola",
+   "org_number": "2021006560",
+   "org_type": "UNIVERSITY",
+   "website": "https://www.uniarts.se/",
+   "ad_count": 1,
+   "latest_ad": "2023-05-04",
+   "name_variants": [
+    "Stockholms Konstnärliga Högskola"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Strömstads kommun",
+   "org_number": "2120001405",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.stromstad.se/",
+   "ad_count": 1,
+   "latest_ad": "2022-01-12",
+   "name_variants": [
+    "Strömstads kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Strömsunds kommun",
+   "org_number": "2120002486",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-05",
+   "name_variants": [
+    "Strömsunds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Styrelsen För Ackreditering och Teknisk Kontroll",
+   "org_number": "2021003815",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-22",
+   "name_variants": [
+    "Styrelsen För Ackreditering och Teknisk Kontroll"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Surahammars kommun",
+   "org_number": "2120002031",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2025-04-30",
+   "name_variants": [
+    "Surahammars kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Svalövs kommun",
+   "org_number": "2120000993",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-19",
+   "name_variants": [
+    "Svalövs kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Sveriges Meteorologiska och Hydrologiska Institu",
+   "org_number": "2021000696",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.smhi.se",
+   "ad_count": 1,
+   "latest_ad": "2023-08-14",
+   "name_variants": [
+    "Sveriges Meteorologiska och Hydrologiska Institu"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Säffle kommun",
+   "org_number": "2120001900",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.saffle.se",
+   "ad_count": 1,
+   "latest_ad": "2026-08-26",
+   "name_variants": [
+    "Säffle kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Säters kommun",
+   "org_number": "2120002247",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-23",
+   "name_variants": [
+    "Säters kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tanums kommun",
+   "org_number": "2120001348",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2022-01-21",
+   "name_variants": [
+    "Tanums kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Timrå kommun",
+   "org_number": "2120002395",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-01-05",
+   "name_variants": [
+    "Timrå kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tingsryds kommun",
+   "org_number": "2120000621",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2024-11-06",
+   "name_variants": [
+    "Tingsryds kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Torsby kommun",
+   "org_number": "2120001777",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.torsby.se",
+   "ad_count": 1,
+   "latest_ad": "2023-11-29",
+   "name_variants": [
+    "Torsby kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Tranemo kommun",
+   "org_number": "2120001462",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-03-27",
+   "name_variants": [
+    "Tranemo kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Upphandlingsmyndigheten",
+   "org_number": "2021006610",
+   "org_type": "STATE_AGENCY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-16",
+   "name_variants": [
+    "Upphandlingsmyndigheten"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vansbro kommun",
+   "org_number": "2120002130",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2021-01-05",
+   "name_variants": [
+    "Vansbro kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vara kommun",
+   "org_number": "2120002924",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2025-02-20",
+   "name_variants": [
+    "Vara kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vaxholms kommun",
+   "org_number": "2120002908",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.vaxholm.se/naringsliv--arbete/jobba-hos-oss-i-vaxholms-stad/lediga-jobb",
+   "ad_count": 1,
+   "latest_ad": "2026-11-02",
+   "name_variants": [
+    "Vaxholms kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vetenskapsrådet",
+   "org_number": "2021005208",
+   "org_type": "STATE_AGENCY",
+   "website": "http://www.vr.se/",
+   "ad_count": 1,
+   "latest_ad": "2022-04-08",
+   "name_variants": [
+    "Vetenskapsrådet"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Vindelns kommun",
+   "org_number": "2120002544",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-11-28",
+   "name_variants": [
+    "Vindelns kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Västerviks kommun",
+   "org_number": "2120000779",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-10-20",
+   "name_variants": [
+    "Västerviks kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ydre kommun",
+   "org_number": "2120000381",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "Ydre kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Ystad kommun",
+   "org_number": "2120001181",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2023-06-09",
+   "name_variants": [
+    "Ystad kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Älmhults kommun",
+   "org_number": "2120000647",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2021-10-28",
+   "name_variants": [
+    "Älmhults kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "Älvsbyns kommun",
+   "org_number": "2120002734",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.alvsbyn.se/arbete-och-karriar/lediga-jobb/",
+   "ad_count": 1,
+   "latest_ad": "2023-03-22",
+   "name_variants": [
+    "Älvsbyns kommun"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "ÅNGE KOMMUN",
+   "org_number": "2120002387",
+   "org_type": "MUNICIPALITY",
+   "website": "https://www.ange.se/",
+   "ad_count": 1,
+   "latest_ad": "2026-06-08",
+   "name_variants": [
+    "ÅNGE KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "ÖRNSKÖLDSVIKS KOMMUN",
+   "org_number": "2120002445",
+   "org_type": "MUNICIPALITY",
+   "website": "http://www.ornskoldsvik.se",
+   "ad_count": 1,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "ÖRNSKÖLDSVIKS KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  },
+  {
+   "name": "ÖSTRA GÖINGE KOMMUN",
+   "org_number": "2120000860",
+   "org_type": "MUNICIPALITY",
+   "website": null,
+   "ad_count": 1,
+   "latest_ad": "2026-11-06",
+   "name_variants": [
+    "ÖSTRA GÖINGE KOMMUN"
+   ],
+   "verified_at": "2026-11-06",
+   "verification_source": "JobTech employer.organization_number"
+  }
+ ]
+}

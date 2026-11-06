@@ -1,0 +1,155 @@
+# Interim Radar. Sex tjanster, avsedda for en svensk VPS.
+#
+# db och redis ligger pa ett internt natverk utan portar ut. Bara web och api
+# ar natbara, och i drift ska aven api ligga bakom web -- Next skickar vidare
+# /api/* dit, vilket gor inloggningscookien till en forstahandscookie och later
+# CSRF-kontrollen i backend se ett riktigt Origin-huvud. Raden "ports" for api
+# finns darfor bara har for felsokning och ska kommenteras bort i drift.
+#
+# Migreringarna kors av api vid uppstart och inte av en egen engangstjanst. Med
+# en enda api-instans ar det entydigt nar de kor; skalar man till flera ska
+# kommandot flyttas till ett eget steg i utrullningen.
+
+name: interim-radar
+
+x-backend: &backend
+  build:
+    context: ./backend
+  image: interim-radar-backend:latest
+  env_file: [.env]
+  environment:
+    DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-radar}:${POSTGRES_PASSWORD:?satt POSTGRES_PASSWORD i .env}@db:5432/${POSTGRES_DB:-interim_radar}
+    REDIS_URL: redis://redis:6379/0
+  volumes:
+    - snapshots:/app/data/snapshots
+  depends_on:
+    db:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+  restart: unless-stopped
+  networks: [internt]
+
+services:
+  db:
+    # pgvector ovanpa Postgres 17. Att ta deras avbild i stallet for att lagga
+    # in tillagget sjalv gor att versionen av vector foljer med uppgraderingen.
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-radar}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?satt POSTGRES_PASSWORD i .env}
+      POSTGRES_DB: ${POSTGRES_DB:-interim_radar}
+      # Svensk sortering utan att en systemlokal behover genereras: ICU
+      # tar lokalen som data. C.UTF-8 finns alltid i Debian-avbilden och
+      # anvands for de meddelanden initdb sjalv skriver.
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C.UTF-8 --locale-provider=icu --icu-locale=sv-SE"
+      TZ: Europe/Stockholm
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Sakerhetskopior skrivs hit av scripts/backup.sh pa varden.
+      - ./backups:/backups
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-radar} -d ${POSTGRES_DB:-interim_radar}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+    networks: [internt]
+
+  redis:
+    image: redis:7-alpine
+    # appendonly ger en ko som overlever en omstart. Utan den tappas de jobb
+    # som lag i kon nar maskinen startades om, och en tappad insamling ar inte
+    # alltid synlig -- den ser ut som en lugn dag.
+    command: ["redis-server", "--appendonly", "yes", "--save", "60", "1"]
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
+    networks: [internt]
+
+  api:
+    <<: *backend
+    command:
+      - sh
+      - -c
+      - "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000 --proxy-headers --forwarded-allow-ips='*'"
+    # Ta bort i drift: web ar den enda tjanst som ska na natet.
+    ports:
+      - "127.0.0.1:8000:8000"
+    networks: [internt, publikt]
+
+  worker:
+    <<: *backend
+    # Tva processer racker. Insamlingen ar I/O-bunden och begransad av
+    # fordrojningen mot varje kalla, inte av CPU.
+    command: ["celery", "-A", "app.tasks.celery_app", "worker", "--loglevel=info", "--concurrency=2"]
+    # Insamlingen gar harifran, sa worker maste na natet.
+    networks: [internt, publikt]
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.tasks.celery_app inspect ping -d celery@$$HOSTNAME"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      api:
+        condition: service_started
+
+  beat:
+    <<: *backend
+    # Schemat star i app/tasks/celery_app.py. En enda beat-process, annars kors
+    # varje schemalagd insamling dubbelt.
+    command:
+      - celery
+      - -A
+      - app.tasks.celery_app
+      - beat
+      - --loglevel=info
+      - --schedule=/app/data/celerybeat-schedule
+    # beat schemalagger bara; den hamtar ingenting sjalv.
+    volumes:
+      - beatdata:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+      api:
+        condition: service_started
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        API_URL: http://api:8000
+    image: interim-radar-web:latest
+    environment:
+      API_URL: http://api:8000
+      TZ: Europe/Stockholm
+    ports:
+      - "${WEB_BIND:-127.0.0.1}:3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+    networks: [internt, publikt]
+
+volumes:
+  pgdata:
+  redisdata:
+  snapshots:
+  beatdata:
+
+networks:
+  # db och redis nas bara harifran.
+  internt:
+    internal: true
+  publikt:

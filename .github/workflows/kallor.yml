@@ -1,0 +1,121 @@
+# Bevakar kallorna, inte koden.
+#
+# Enhetstesterna provar att adaptern tolkar en payload ratt. De sager ingenting
+# om att kallan fortfarande ser ut som adaptern tror. Ett API som byter namn pa
+# ett falt gar igenom varje enhetstest och ger noll traffar i drift -- och noll
+# traffar ser ut som en lugn vecka, inte som ett fel.
+#
+# Darfor ett eget flode, pa schema, med integrationstesterna och
+# kallkontrollen. Det far misslyckas utan att blockera nagon utveckling: ett
+# rott bygge har betyder "nagon annans server har andrat sig", och det ar precis
+# den signal man vill ha.
+
+name: Kallor
+
+on:
+  schedule:
+    # Mandag morgon svensk tid. Tidigt nog att hinna titta pa det samma dag.
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+    inputs:
+      integrationstester:
+        description: "Kor aven integrationstesterna mot JobTech och TED"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  kontroll:
+    name: Kallkontroll
+    runs-on: ubuntu-latest
+    env:
+      # Kallkontrollen rakar inte i databasen, men config laser miljon vid
+      # import och ska inte falla pa en saknad nyckel.
+      DATABASE_URL: sqlite:///./kontroll.db
+      SECRET_KEY: ci-nyckel-anvands-inte-i-drift
+      ENVIRONMENT: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+
+      - name: Installera
+        working-directory: backend
+        run: pip install -e ".[dev]"
+
+      - name: Kontrollera kallorna
+        id: probe
+        working-directory: backend
+        run: |
+          python -m scripts.probe_sources | tee /tmp/kallor.txt
+          python -m scripts.probe_sources --json > /tmp/kallor.json
+
+          {
+            echo "## Kallkontroll $(date -u +%F)"
+            echo
+            echo '```'
+            cat /tmp/kallor.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          # En kalla som star som ACTIVE i registret men inte svarar ar ett fel
+          # vart att veta om. En som star som MANUAL_ONLY eller BLOCKED ar det
+          # inte -- den provas inte ens.
+          python - <<'PY'
+          import json
+          import os
+
+          data = json.load(open("/tmp/kallor.json"))
+          trasiga = [
+              k
+              for k in data["kallor"]
+              if k["kontaktad"]
+              and k["status_i_registret"] == "ACTIVE"
+              and k["bedomning"] not in ("OK", "SVARAR (ej GET)")
+          ]
+          with open(os.environ["GITHUB_OUTPUT"], "a") as ut:
+              ut.write(f"trasiga={len(trasiga)}\n")
+              ut.write("lista=" + "; ".join(f"{k['nyckel']}: {k['bedomning']}" for k in trasiga) + "\n")
+          for k in trasiga:
+              print(f"::warning title=Kalla svarar inte::{k['nyckel']}: {k['bedomning']} {k['fel'] or ''}")
+          PY
+
+      - name: Spara utfallet
+        uses: actions/upload-artifact@v4
+        with:
+          name: kallkontroll-${{ github.run_number }}
+          path: /tmp/kallor.json
+          retention-days: 90
+
+      - name: Integrationstester mot verkliga API:er
+        if: github.event_name == 'schedule' || inputs.integrationstester
+        working-directory: backend
+        run: pytest -q -m integration
+
+      - name: Oppna ett arende nar en aktiv kalla slutat svara
+        if: steps.probe.outputs.trasiga != '0' && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LISTA: ${{ steps.probe.outputs.lista }}
+          ANTAL: ${{ steps.probe.outputs.trasiga }}
+        run: |
+          # Ett arende i stallet for ett tyst rott bygge, sa att det finns nagot
+          # att folja upp i. Ett per vecka racker; finns ett oppet redan
+          # kommenteras det i stallet for att ett nytt skapas.
+          befintligt="$(gh issue list --label kallor --state open --limit 1 --json number --jq '.[0].number')"
+          text="Kallkontrollen $(date -u +%F) hittade $ANTAL aktiv(a) kalla/kallor som inte svarar: $LISTA"
+          if [ -n "$befintligt" ]; then
+            gh issue comment "$befintligt" --body "$text"
+          else
+            gh label create kallor --description "Kallor som slutat svara" --color d93f0b 2>/dev/null || true
+            gh issue create --title "Kallkontroll: $ANTAL kalla/kallor svarar inte" \
+              --label kallor --body "$text"
+          fi

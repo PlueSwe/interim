@@ -1,0 +1,3 @@
+# Interim Radar ar ett privat verktyg. Ingenting har ska indexeras.
+User-agent: *
+Disallow: /

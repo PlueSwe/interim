@@ -1,0 +1,10 @@
+# node_modules byggs om i containern; .next ar byggutdata fran en annan
+# plattform och ska aldrig folja med in.
+node_modules/
+.next/
+out/
+npm-debug.log*
+.env
+.env.*
+!.env.example
+tsconfig.tsbuildinfo

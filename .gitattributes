@@ -1,0 +1,17 @@
+# Radslut normaliseras till LF i repot. Utvecklingen sker pa Windows men allt
+# som kor gor det i en Linux-container, och ett skalskript med CRLF ger
+# "bash: \r: command not found" -- ett fel som ser ut att handla om nagot helt
+# annat an radslut.
+* text=auto eol=lf
+
+*.sh text eol=lf
+*.yml text eol=lf
+Dockerfile text eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.db binary
+*.dump binary

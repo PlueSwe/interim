@@ -1,0 +1,337 @@
+# Tester, lint och – det viktiga – migreringen mot en riktig PostgreSQL med
+# pgvector.
+#
+# Varfor det sista ar varde: `alembic upgrade head` har aldrig korts mot
+# PostgreSQL. Migreringen ar genererad ur modellerna och kompilerar, men
+# check-villkoren med Postgres-syntax, de partiella indexen och
+# `embedding vector(1024)` provas forst nar en riktig server far satserna.
+# SQLite-testerna kan inte tacka det, och det star som otestat i
+# IMPLEMENTATION_PLAN.md till den dag det har flodet har kort.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.12"
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+
+      - name: Installera ruff
+        run: pip install ruff
+
+      - name: ruff check
+        working-directory: backend
+        run: ruff check --output-format=github .
+
+      - name: ruff format
+        working-directory: backend
+        run: ruff format --check .
+
+  tester:
+    name: Tester (SQLite)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+
+      - name: Installera
+        working-directory: backend
+        run: pip install -e ".[dev]"
+
+      - name: pytest
+        working-directory: backend
+        env:
+          # Testerna satter sin egen SQLite i conftest, men config laser miljon
+          # vid import och ska inte falla pa en saknad nyckel.
+          SECRET_KEY: ci-nyckel-anvands-inte-i-drift
+          ENVIRONMENT: test
+        run: pytest -q --cov=app --cov-report=term-missing:skip-covered
+
+  genererade-filer:
+    name: Genererade filer ar i fas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+
+      - name: Installera
+        working-directory: backend
+        run: pip install -e "."
+
+      - name: Generera om och jamfor
+        working-directory: backend
+        env:
+          SECRET_KEY: ci-nyckel-anvands-inte-i-drift
+        run: |
+          cp alembic/versions/0001_initial.py /tmp/migrering-fore.py
+          python -m scripts.gen_enums
+          python -m scripts.gen_migration
+
+          fel=0
+          git diff --exit-code -- ../frontend/lib/enums.ts || fel=1
+          # Create Date andras varje korning och sager ingenting om schemat.
+          diff <(grep -v '^Create Date:' /tmp/migrering-fore.py) \
+               <(grep -v '^Create Date:' alembic/versions/0001_initial.py) || fel=1
+
+          if [ "$fel" -ne 0 ]; then
+            echo "::error::Genererade filer ligger efter modellerna. Kor 'python -m scripts.gen_enums' och 'python -m scripts.gen_migration' i backend/ och checka in resultatet."
+            exit 1
+          fi
+
+  migrering:
+    name: Migrering mot PostgreSQL 17 + pgvector
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        # Samma avbild som docker-compose.yml anvander i drift.
+        image: pgvector/pgvector:pg17
+        env:
+          POSTGRES_USER: radar
+          POSTGRES_PASSWORD: ci-losenord
+          POSTGRES_DB: interim_radar
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U radar -d interim_radar"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgresql+psycopg://radar:ci-losenord@localhost:5432/interim_radar
+      SECRET_KEY: ci-nyckel-anvands-inte-i-drift
+      COOKIE_SECURE: "false"
+      ENVIRONMENT: test
+      CORS_ORIGINS: '["http://localhost:3000"]'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: backend/pyproject.toml
+
+      - name: Installera
+        working-directory: backend
+        run: pip install -e "."
+
+      - name: alembic upgrade head
+        working-directory: backend
+        run: alembic upgrade head
+
+      - name: Schemat ser ut som modellerna sager
+        working-directory: backend
+        run: |
+          python - <<'PY'
+          import os
+          import sqlalchemy as sa
+
+          motor = sa.create_engine(os.environ["DATABASE_URL"], future=True)
+          with motor.connect() as anslutning:
+              fraga = lambda s: anslutning.execute(sa.text(s)).scalar()
+
+              tabeller = fraga(
+                  "select count(*) from information_schema.tables "
+                  "where table_schema='public' and table_name <> 'alembic_version'"
+              )
+              print("tabeller:", tabeller)
+              assert tabeller == 25, f"forvantade 25 tabeller, fick {tabeller}"
+
+              # Det har ar provet som inte gick att gora utan en riktig server.
+              # Utan pgvector blir kolumnen json, och en likhetssokning skulle
+              # falla forst nar nagon forsokte gora en.
+              typ = fraga(
+                  "select udt_name from information_schema.columns "
+                  "where table_name='opportunities' and column_name='embedding'"
+              )
+              print("opportunities.embedding:", typ)
+              assert typ == "vector", f"embedding har typ {typ!r}, inte vector"
+
+              villkor = fraga(
+                  "select count(*) from pg_constraint where contype='c' "
+                  "and connamespace='public'::regnamespace"
+              )
+              print("check-villkor:", villkor)
+              assert villkor >= 8, f"forvantade minst 8 check-villkor, fick {villkor}"
+
+              revision = fraga("select version_num from alembic_version")
+              print("alembic-revision:", revision)
+              assert revision == "0001"
+          print("schemat ar som modellerna sager")
+          PY
+
+      - name: Check-villkoren haller i databasen, inte bara i koden
+        working-directory: backend
+        run: |
+          python - <<'PY'
+          import os
+          import uuid
+          import sqlalchemy as sa
+
+          # Sista forsvarslinjen i exkluderingsfiltret: ett EXCLUDED utan citat
+          # ska vagras av databasen aven om koden skulle sluta kontrollera det.
+          # Raderna nedan byggs i riktig ordning, sa att det som vagrar ar
+          # check-villkoret och inte en framnyckel. Ett prov som gar igenom av
+          # fel skal ar varre an inget prov.
+          motor = sa.create_engine(os.environ["DATABASE_URL"], future=True)
+
+          snapshot, annons, uppdrag = (uuid.uuid4() for _ in range(3))
+
+          with motor.begin() as a:
+              a.execute(
+                  sa.text(
+                      "insert into source_snapshots "
+                      "(id, source_key, fetched_at, sha256, created_at, updated_at) "
+                      "values (:i, 'manual', now(), :h, now(), now())"
+                  ),
+                  {"i": str(snapshot), "h": "0" * 64},
+              )
+              a.execute(
+                  sa.text(
+                      "insert into job_ads (id, source_key, external_id, snapshot_id, title, "
+                      "title_normalised, employment_type, role_family, created_at, updated_at) "
+                      "values (:i, 'manual', 'villkorsprov', :s, 'IT-chef', 'it chef', "
+                      "'PERMANENT', 'IT_MANAGER', now(), now())"
+                  ),
+                  {"i": str(annons), "s": str(snapshot)},
+              )
+              a.execute(
+                  sa.text(
+                      "insert into opportunities (id, kind, status, exclusion_status, job_ad_id, "
+                      "created_at, updated_at) values (:i, 'PERMANENT_POSITION', 'OPEN', "
+                      "'REVIEW_REQUIRED', :j, now(), now())"
+                  ),
+                  {"i": str(uppdrag), "j": str(annons)},
+              )
+
+          def exkludera(citat):
+              with motor.begin() as a:
+                  a.execute(
+                      sa.text(
+                          "insert into exclusion_records (id, opportunity_id, verdict, "
+                          "matched_quote, assessed_at, assessor, created_at, updated_at) "
+                          "values (:i, :o, 'EXCLUDED', :q, now(), 'RULE', now(), now())"
+                      ),
+                      {"i": str(uuid.uuid4()), "o": str(uppdrag), "q": citat},
+                  )
+
+          try:
+              exkludera(None)
+          except sa.exc.IntegrityError as e:
+              text = str(e.orig)
+              assert "excluded_needs_quote" in text, f"fel villkor vagrade: {text}"
+              print("databasen vagrade ett EXCLUDED utan citat, som den ska")
+          else:
+              raise SystemExit("FEL: ett EXCLUDED utan citat gick igenom")
+
+          exkludera("Sakerhetsprovning med registerkontroll kravs")
+          print("med citat gick det igenom")
+          PY
+
+      - name: Seeda och lasa ut tackningen
+        working-directory: backend
+        run: |
+          python -m app.cli seed
+          python -m app.cli coverage
+          python -m app.cli ivo-case --show
+
+          # "ivo-case --show" returnerar {"error": ...} och avslutar med 0 nar
+          # snapshotet saknas. Utan den har kontrollen skulle flodet bli gront
+          # pa ett testfall som aldrig kordes.
+          python - <<'PY'
+          from app.db import session_scope
+          from app.seed import describe_ivo_case
+
+          with session_scope() as s:
+              arende = describe_ivo_case(s)
+
+          assert "error" not in arende, arende["error"]
+          tillsattning = arende["appointment"]
+          assert tillsattning["status"] == "REQUEST_READY", tillsattning["status"]
+          assert tillsattning["appointed_person"] is None, tillsattning
+          print("IVO-arendet seedades och star kvar som obesvarat")
+          PY
+
+      - name: API:et startar mot PostgreSQL och svarar
+        working-directory: backend
+        run: |
+          python -m app.cli create-user --email ci@example.com --role ADMIN \
+            --password ci-losenord-12345
+          uvicorn app.main:app --host 127.0.0.1 --port 8000 --log-level warning &
+          for i in $(seq 1 30); do
+            curl -fsS http://127.0.0.1:8000/health >/dev/null 2>&1 && break
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8000/health | tee /tmp/health.json
+          python -c "import json; d=json.load(open('/tmp/health.json')); assert d['database']=='ok', d"
+
+          # Inloggning, sa att cookien och CSRF-kontrollen provas mot Postgres.
+          curl -fsS -c /tmp/jar -H 'Origin: http://localhost:3000' \
+            -H 'Content-Type: application/json' \
+            -d '{"email":"ci@example.com","password":"ci-losenord-12345"}' \
+            http://127.0.0.1:8000/api/v1/auth/login > /dev/null
+          curl -fsS -b /tmp/jar http://127.0.0.1:8000/api/v1/dashboard > /tmp/dash.json
+          python - <<'PY'
+          import json
+          d = json.load(open("/tmp/dash.json"))
+          kravs = {
+              "ads_per_week", "by_org_type", "recruitments_per_authority",
+              "appointments_over_time", "by_recruiter", "by_region",
+          }
+          saknas = kravs - set(d["charts"])
+          assert not saknas, f"diagram saknas: {saknas}"
+          print("dashboarden svarade med alla sex diagram")
+          PY
+
+      - name: Migreringen gar att rulla tillbaka
+        working-directory: backend
+        run: |
+          alembic downgrade base
+          python - <<'PY'
+          import os
+          import sqlalchemy as sa
+
+          motor = sa.create_engine(os.environ["DATABASE_URL"], future=True)
+          with motor.connect() as anslutning:
+              kvar = anslutning.execute(
+                  sa.text(
+                      "select count(*) from information_schema.tables "
+                      "where table_schema='public' and table_name <> 'alembic_version'"
+                  )
+              ).scalar()
+          assert kvar == 0, f"{kvar} tabell(er) kvar efter downgrade"
+          print("downgrade lamnade schemat tomt")
+          PY
+          alembic upgrade head

@@ -1,0 +1,263 @@
+# Bygger containerbilderna och kor hela stacken pa riktigt.
+#
+# Det har flodet finns for att tacka det som inte gick att prova pa
+# utvecklingsmaskinen: Docker-demonen gick inte att starta dar, sa Dockerfilerna
+# var aldrig byggda och compose-filen aldrig uppe. En Linux-korare i GitHub
+# Actions har en demon, och dar kan hela kedjan provas i ett svep:
+#
+#   bygg -> starta sex tjanster -> migrering -> seed -> inloggning i API:et
+#   -> webben svarar -> sakerhetskopia -> aterstallningsprov
+#
+# Sista steget ar poangen. Ett aterstallningsprov som aldrig korts sager inget
+# om sakerhetskopian, och det ar precis den sortens sak man upptacker den dag
+# man behover den.
+
+name: Stack
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docker-compose.yml"
+      - "backend/**"
+      - "frontend/**"
+      - "scripts/**"
+      - ".github/workflows/stack.yml"
+  pull_request:
+    paths:
+      - "docker-compose.yml"
+      - "backend/**"
+      - "frontend/**"
+      - "scripts/**"
+      - ".github/workflows/stack.yml"
+  # En gang i veckan aven utan andringar. Da fangas det som gar sonder av sig
+  # sjalvt: en basavbild som uppdaterats, ett npm-paket som dragits tillbaka,
+  # och framst aterstallningsprovet -- en sakerhetskopia ska provas pa schema,
+  # inte nar nagon rakar rora koden.
+  schedule:
+    - cron: "0 4 * * 0"
+  workflow_dispatch:
+
+concurrency:
+  group: stack-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  bygg:
+    name: Bygg bilderna
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Backend
+        uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          tags: interim-radar-backend:latest
+          # Lagret ligger i GitHubs cache sa att ett andrat app/ inte bygger om
+          # pip-steget. Ombyggnaden gar fran minuter till sekunder.
+          cache-from: type=gha,scope=backend
+          cache-to: type=gha,mode=max,scope=backend
+          load: true
+
+      - name: Frontend
+        uses: docker/build-push-action@v6
+        with:
+          context: ./frontend
+          build-args: |
+            API_URL=http://api:8000
+          tags: interim-radar-web:latest
+          cache-from: type=gha,scope=web
+          cache-to: type=gha,mode=max,scope=web
+          load: true
+
+      - name: Vad bilderna blev
+        run: |
+          docker image ls interim-radar-backend:latest interim-radar-web:latest
+          echo "--- backend kor som icke-root? ---"
+          docker run --rm --entrypoint id interim-radar-backend:latest
+          echo "--- web kor som icke-root? ---"
+          docker run --rm --entrypoint id interim-radar-web:latest
+
+  stacken:
+    name: Hela stacken
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Skriv .env
+        run: |
+          # Varden finns bara under korningen. Inget av dem ar en hemlighet att
+          # skydda -- stacken rivs nar jobbet ar klart.
+          cat > .env <<'EOF'
+          POSTGRES_USER=radar
+          POSTGRES_DB=interim_radar
+          POSTGRES_PASSWORD=ci-losenord-bara-under-korningen
+          SECRET_KEY=ci-nyckel-anvands-inte-i-drift
+          FIELD_ENCRYPTION_KEY=aGVqaGVqaGVqaGVqaGVqaGVqaGVqaGVqaGVqaGVqaGU=
+          ENVIRONMENT=test
+          COOKIE_SECURE=false
+          CORS_ORIGINS=["http://localhost:3000"]
+          AI_PROVIDER=none
+          WEB_BIND=127.0.0.1
+          EOF
+          echo "compose-filen tolkas utan fel:"
+          docker compose config --quiet && echo "OK"
+
+      - name: Starta db och redis
+        run: |
+          # --wait vantar pa healthcheckarna i compose-filen, sa ingen egen
+          # vantesnurra behovs.
+          docker compose up -d --wait --wait-timeout 180 db redis
+          docker compose ps
+
+      - name: Starta api, worker, beat och web
+        run: |
+          # api kor "alembic upgrade head" sjalv innan uvicorn, sa det har
+          # steget ar ocksa provet pa att migreringen fungerar i containern.
+          docker compose up -d --wait --wait-timeout 300 api worker beat web
+          docker compose ps
+
+      - name: Migreringen landade
+        run: |
+          docker compose exec -T api alembic current
+          docker compose exec -T api python - <<'PY'
+          import os
+          import sqlalchemy as sa
+
+          motor = sa.create_engine(os.environ["DATABASE_URL"], future=True)
+          with motor.connect() as a:
+              tabeller = a.execute(
+                  sa.text(
+                      "select count(*) from information_schema.tables "
+                      "where table_schema='public' and table_name <> 'alembic_version'"
+                  )
+              ).scalar()
+              typ = a.execute(
+                  sa.text(
+                      "select udt_name from information_schema.columns "
+                      "where table_name='opportunities' and column_name='embedding'"
+                  )
+              ).scalar()
+          print("tabeller:", tabeller, "| embedding:", typ)
+          assert tabeller == 25, tabeller
+          assert typ == "vector", typ
+          PY
+
+      - name: Seeda och skapa en anvandare
+        run: |
+          docker compose exec -T api python -m app.cli seed
+          docker compose exec -T api python -m app.cli coverage
+          docker compose exec -T api python -m app.cli ivo-case --show
+          docker compose exec -T api python -m app.cli create-user \
+            --email ci@example.com --role ADMIN --password ci-losenord-12345
+
+      - name: IVO-arendet star kvar som obesvarat
+        run: |
+          docker compose exec -T api python - <<'PY'
+          from app.db import session_scope
+          from app.seed import describe_ivo_case
+
+          with session_scope() as s:
+              arende = describe_ivo_case(s)
+
+          import json
+          print(json.dumps(arende, ensure_ascii=False, indent=1))
+
+          assert "error" not in arende, arende["error"]
+          tillsattning = arende["appointment"]
+          # Bestallningens krav: ingen tjanst far markeras som tillsatt utan en
+          # handling. IVO anslar sina beslut pa en fysisk anslagstavla, sa svaret
+          # finns inte digitalt och arendet ska ligga kvar med ett utkast.
+          assert tillsattning["status"] == "REQUEST_READY", tillsattning["status"]
+          assert tillsattning["appointed_person"] is None, tillsattning
+          assert tillsattning["verification_level"] is None, tillsattning
+          PY
+
+      - name: Webben svarar och skickar vidare /api
+        run: |
+          for i in $(seq 1 60); do
+            curl -fsS -o /dev/null http://127.0.0.1:3000/login && break
+            sleep 2
+          done
+          curl -fsS -o /dev/null -w 'web /login: %{http_code}\n' http://127.0.0.1:3000/login
+
+          # /health och /api gar via Next till api-containern. Att de svarar
+          # harifran ar provet pa att vidarebefordran fungerar, och den ar vad
+          # som gor inloggningscookien till en forstahandscookie.
+          curl -fsS http://127.0.0.1:3000/health | tee /tmp/health.json
+          python3 -c "import json; d=json.load(open('/tmp/health.json')); assert d['database']=='ok', d"
+
+          curl -fsS -c /tmp/jar -H 'Origin: http://localhost:3000' \
+            -H 'Content-Type: application/json' \
+            -d '{"email":"ci@example.com","password":"ci-losenord-12345"}' \
+            http://127.0.0.1:3000/api/v1/auth/login > /dev/null
+          curl -fsS -b /tmp/jar http://127.0.0.1:3000/api/v1/dashboard > /tmp/dash.json
+          python3 - <<'PY'
+          import json
+          d = json.load(open("/tmp/dash.json"))
+          kravs = {
+              "ads_per_week", "by_org_type", "recruitments_per_authority",
+              "appointments_over_time", "by_recruiter", "by_region",
+          }
+          saknas = kravs - set(d["charts"])
+          assert not saknas, f"diagram saknas: {saknas}"
+          print("dashboarden svarade med alla sex diagram genom web -> api")
+          PY
+
+      - name: En begaran kan inte skickas utan godkannande
+        run: |
+          docker compose exec -T api python - <<'PY'
+          from app.core import foi
+          from app.db import session_scope
+          from app.models import InformationRequest, RequestStatus
+
+          # Bada sparrarna provas: koden vagrar, och databasens check-villkor
+          # vagrar aven om koden skulle sluta gora det.
+          with session_scope() as s:
+              begaran = s.query(InformationRequest).first()
+              assert begaran is not None, "seedningen skapade ingen begaran"
+              assert begaran.status is RequestStatus.DRAFT, begaran.status
+
+              try:
+                  foi.mark_sent(s, begaran, channel="EMAIL")
+              except ValueError as e:
+                  print("koden vagrade:", e)
+              else:
+                  raise SystemExit("FEL: en begaran kunde markeras som skickad utan godkannande")
+          PY
+
+      - name: Worker och beat lever
+        run: |
+          docker compose exec -T worker celery -A app.tasks.celery_app inspect ping
+          docker compose logs beat --tail 20
+
+      - name: Sakerhetskopia och aterstallningsprov
+        run: |
+          # pg_dump skriver filen inifran db-containern, dar processen kor som
+          # postgres (uid 999). Katalogen maste darfor vara skrivbar for den,
+          # och det galler pa VPS:en ocksa -- se kommentaren i backup.sh.
+          mkdir -p backups
+          chmod 777 backups
+          chmod +x scripts/backup.sh scripts/restore_test.sh
+          ./scripts/backup.sh
+          ls -la backups/
+          ./scripts/restore_test.sh
+
+      - name: Loggar nar nagot gick fel
+        if: failure()
+        run: |
+          docker compose ps
+          for t in db redis api worker beat web; do
+            echo "::group::$t"
+            docker compose logs "$t" --tail 120 || true
+            echo "::endgroup::"
+          done
+
+      - name: Riv stacken
+        if: always()
+        run: docker compose down -v

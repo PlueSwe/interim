@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ljust tema, endast. Ingen prefers-color-scheme-regel och ingen
+   dark-variant i tailwind.config.ts: granssnittet ska se likadant ut
+   oavsett systeminstallning. */
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #f7f9fb;
+  color: #15191e;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Siffror i tabeller och nyckeltal ska sta i kolumn. */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: #cfe2ea;
+}
