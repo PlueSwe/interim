@@ -37,6 +37,38 @@ på frågan om tjänsten räcker: ett webbhotell med FTP kör inte Docker, har i
 PostgreSQL och får inte ha processer som ligger kvar, och systemet behöver alla
 tre. Det krävs en VPS eller dedikerad server med SSH och root.
 
+### Hur stor maskin behövs
+
+Mätt, inte gissat. `stack.yml` kör `docker stats` på de sex containrarna varje
+gång stacken startas i CI, så siffran håller sig aktuell:
+
+| container | i vila |
+|---|---|
+| `worker` (Celery, `--concurrency=2`) | 144 MiB |
+| `api` (uvicorn) | 88 MiB |
+| `beat` | 78 MiB |
+| `web` (Next.js) | 35 MiB |
+| `db` (PostgreSQL 17 + pgvector) | 34 MiB |
+| `redis` | 5 MiB |
+| **summa** | **383 MiB** |
+
+Tre saker siffran inte säger:
+
+- **Den är ett golv.** Databasen var nyss seedad. PostgreSQL växer med cachen när
+  tabellerna fylls, och `shared_buffers` står på standardvärdet 128 MB som inte
+  är allokerat förrän det används.
+- **Bygget är toppen, inte driften.** `installera.sh` kör `docker compose build`
+  på servern, och `npm run build` i frontend-avbilden är det som fäller en liten
+  maskin. En server som klarar driften klarar inte nödvändigtvis bygget.
+- **Workern kan bantas.** `--concurrency=2` ger två egna Python-processer. Sänk
+  till 1 i `docker-compose.yml` och du är nere på omkring 310 MiB.
+
+Praktiskt: **2 GB RAM är golvet** för drift, och då med swap och avbilder byggda
+någon annanstans. **4 GB och uppåt** räcker för både bygge och drift utan att man
+behöver tänka på det. En gratisinstans med 1 GB – Googles `e2-micro`, Oracles
+`VM.Standard.E2.1.Micro` – gör det inte; Oracles ARM-shape `VM.Standard.A1.Flex`
+ger 2 OCPU och 12 GB och gör det med marginal.
+
 ### ARM-servrar
 
 Driftservern är en Ampere-maskin (ARM64), och det fungerar: alla fyra
