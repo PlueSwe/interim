@@ -250,8 +250,12 @@ jobs:
           # pg_dump skriver filen inifran db-containern, dar processen kor som
           # postgres (uid 999). Katalogen maste darfor vara skrivbar for den,
           # och det galler pa VPS:en ocksa -- se kommentaren i backup.sh.
-          mkdir -p backups
-          chmod 777 backups
+          # Katalogen finns redan: Docker skapade den som root nar db-containern
+          # monterade ./backups:/backups. Darfor sudo har -- och darfor chown
+          # till 999 i stallet for chmod 777, vilket ar exakt samma handgrepp
+          # som backup.sh ber om pa VPS:en.
+          sudo mkdir -p backups
+          sudo chown 999:999 backups
           chmod +x scripts/backup.sh scripts/restore_test.sh
           ./scripts/backup.sh
           ls -la backups/
